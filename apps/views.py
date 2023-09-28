@@ -38,13 +38,33 @@ def pages_resume():
   experiences=experiences_request.json()
   return render_template('resume.html', segment='resume', parent='pages', experiences=experiences)
 
-@app.route('/api-qa-presentation')
-def qa_framework():
-  return render_template('qa-framework.html', segment='qa-framework', parent='pages')
+@app.route('/presentation-qa-framework')
+def presentation_qa_framework():
+  return render_template('presentation-qa-framework.html', segment='presentation-qa-framework', parent='pages')
 
 @app.route('/live-demo')
 def live_demo():
   return render_template('live-demo.html', segment='live-demo', parent='pages')
+
+@app.route('/repository/api-qa/')
+def api_qa():
+  return render_template('repository/api-qa.html', segment='api-qa', parent='repository')
+
+@app.route('/repository/front-qa/')
+def front_qa():
+  return render_template('repository/front-qa.html', segment='front-qa', parent='repository')
+
+@app.route('/repository/cy-runner/')
+def cy_runner():
+  return render_template('repository/cy-runner.html', segment='cy-runner', parent='repository')
+
+@app.route('/repository/newman-runner/')
+def newman_runner():
+  return render_template('repository/newman-runner.html', segment='newman-runner', parent='repository')
+
+@app.route('/repository/data-api/')
+def data_api():
+  return render_template('repository/data-api.html', segment='data-api', parent='repository')
 
 @app.route('/documentation/functional/')
 def doc_functional():

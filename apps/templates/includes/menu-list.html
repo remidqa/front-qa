@@ -5,10 +5,10 @@
       <p>Resume</p>
     </a>
   </li>
-  <li class="{% if 'api-qa-presentation' in segment %} active {% endif %}">
-    <a href="{{url_for('qa_framework')}}">
+  <li class="{% if 'presentation-qa-framework' in segment %} active {% endif %}">
+    <a href="{{url_for('presentation_qa_framework')}}">
       <i class="tim-icons icon-molecule-40"></i>
-      <p>QA Framework</p>
+      <p>Framework presentation</p>
     </a>
   </li>
   <li class="{% if 'dashboard' in segment %} active {% endif %}">
@@ -18,25 +18,43 @@
     </a>
   </li>
   <li>
-    <a data-toggle="collapse" href="#documentation">
-      <i class="tim-icons icon-paper"></i>
+    <a data-toggle="collapse" href="#repositories">
+      <i class="tim-icons icon-app"></i>
       <p>
-        Documentation
+        Repositories
         <b class="caret"></b>
       </p>
     </a>
-    <div class="collapse {% if 'documentation' in parent %}show{% endif %}" id="documentation">
+    <div class="collapse {% if 'repository' in parent %}show{% endif %}" id="repositories">
       <ul class="nav">
-        <li class="{% if 'functional' in segment %}active{% endif %}">
-          <a href="{{url_for('doc_functional')}}">
+        <li class="{% if 'api-qa' in segment %}active{% endif %}">
+          <a href="{{url_for('api_qa')}}">
             <span class="sidebar-mini-icon">F</span>
-            <span class="sidebar-normal"> Functional docs</span>
+            <span class="sidebar-normal"> QA Framework</span>
           </a>
         </li>
-        <li class="{% if 'technical' in segment %}active{% endif %}">
-          <a href="{{url_for('doc_technical')}}">
-            <span class="sidebar-mini-icon">A</span>
-            <span class="sidebar-normal"> Technical docs </span>
+        <li class="{% if 'cy-runner' in segment %}active{% endif %}">
+          <a href="{{url_for('cy_runner')}}">
+            <span class="sidebar-mini-icon">F</span>
+            <span class="sidebar-normal"> Cypress runner</span>
+          </a>
+        </li>
+        <li class="{% if 'newman-runner' in segment %}active{% endif %}">
+          <a href="{{url_for('newman_runner')}}">
+            <span class="sidebar-mini-icon">F</span>
+            <span class="sidebar-normal"> Newman runnner</span>
+          </a>
+        </li>
+        <li class="{% if 'data-api' in segment %}active{% endif %}">
+          <a href="{{url_for('data_api')}}">
+            <span class="sidebar-mini-icon">F</span>
+            <span class="sidebar-normal"> Data API</span>
+          </a>
+        </li>
+        <li class="{% if 'front-qa' in segment %}active{% endif %}">
+          <a href="{{url_for('front_qa')}}">
+            <span class="sidebar-mini-icon">F</span>
+            <span class="sidebar-normal"> Front site</span>
           </a>
         </li>
       </ul>
@@ -48,5 +66,10 @@
       <p>Live demo</p>
     </a>
   </li>
-  
+
 </ul>
+<style>
+  .sidebar ul li p {
+    font-family: "Poppins";
+  }
+</style>
