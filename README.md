@@ -6,7 +6,7 @@
 ## Technologies
 - python
 - jinja template
-- Docker build
+- Docker
 - remidqa quality workflow
 
 ## Build
