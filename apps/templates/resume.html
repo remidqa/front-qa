@@ -1,0 +1,237 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="content">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-header mb-1">
+          <div style="width: 100%; display: inline-block;">
+            <div style="float: left;">
+              <h5 class="card-category">Rémi Dandois QA</h5>
+              <h3 class="card-title">Resume</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <!-- SKILLS -->   
+          <div style="margin-bottom: 50px;">
+            {% set skills=[
+              {'title': 'Functional tests', 'list': ['Cypress', 'Cerberus', 'Selenium', 'Appium']},
+              {'title': 'API tests', 'list': ['Postman']},
+              {'title': 'Code quality', 'list': ['Sonarqube', 'Codacy']},
+              {'title': 'Monitoring', 'list': ['Datadog', 'Graphana', 'logs']},
+              {'title': 'Programming', 'list': ['Nodejs', 'Bash', 'Python', 'Front languages']},
+              {'title': 'Languages', 'list': ['French: native', 'English: proficiency']}
+            ] %}
+            <div style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
+              <span>Skills</span>
+            </div>
+            <table style="width: 100%; text-align: center;">
+              <tr style="width: 100%;">
+                {% for skill in skills %}
+                  <div style="width: 33%; float: left; text-align: center;">
+                    <div>
+                      <span class="blue" style="font-size:large;">{{ skill.title }}</span>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                      <span class="pink" style="font-size: larger; font-weight: 300; ">{{ skill.list|join(', ') }}</span>
+                    </div>
+                  </div>
+                {% endfor %}
+              </tr>
+            </table>
+          </div>
+
+          <!-- EXPERIENCES -->
+          <div>
+            <div style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large;">
+              Professional Experiences
+            </div>
+                {% for experience in experiences %}
+                <table style="width: 100%; margin: 25px 0px 5px 0px;" id="en-table">
+                  <tr style="width: 100%;">
+                    <td style="width: 15%; vertical-align: top; text-align: right; padding-right: 20px;">
+                      {% if experience.iLearned|length != 0 %}
+                      <div style="display: inline-block;">
+                        <div style="float: right; align-items: right; padding-left:20px">
+                        </div>
+                        <div class="pink" style="font-size: large; font-weight: 500; float: right;">{{experience.company}}
+                        </div>
+                      </div>
+                      {% endif %}
+                      <div style="color:#1d253b; font-family: Poppins, sans-serif;font-weight: 100;">
+                        <div>{{experience.dateStart.m}}/{{experience.dateStart.y}} - {{experience.duration}}</div>
+                        <div>{{experience.location}}</div>
+                      </div>
+                    </td>
+                    <td style="width: 85%; vertical-align: top;">
+                      <h3 class="pink" style="font-weight: 500; margin-bottom: 10px">
+                        <span class="blue">{{experience.title}}</span>
+                      </h3>
+                      {% if experience.iLearned|length != 0 %}
+                      <div>
+                        <span class="blue" style="font-weight: 400">mission</span>
+                        <span style="color:#000000; font-family: Poppins, sans-serif;font-weight: 100">:
+                          {{experience.mission}}</span>
+                      </div>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  <tr style="vertical-align: top;">
+                    <td style="text-align: right; padding-right:20px; vertical-align: top; padding-top:20px">
+                      <span class="blue" style="font-weight: 400">I did</span>
+                    </td>
+                    <td
+                      style="color:#1d253b; font-family: Poppins, sans-serif;font-weight: 100; vertical-align: top; padding-top:20px">
+                      <table style="width: 100%;">
+                        {% for iDid in experience.iDid %}
+                        <tr>
+                          <td style="vertical-align: top; width: 1%;">-</td>
+                          <td>
+                            <span class="pink" style="font-weight:400">{{iDid.title}}</span>
+                            <br /><span style="font-weight: 100; color:#000000">{{iDid.description}}</span>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </table>
+                    </td>
+                  </tr>
+                  {% if experience.iLearned|length != 0 %}
+                  <tr>
+                    <td style="text-align: right; padding-right: 20px; vertical-align: top; padding-top: 20px;">
+                      <span class="blue" style="font-weight: 400">I learned</span>
+                    </td>
+                    <td style="padding-top: 20px;">
+                      <div style="display: inline-block; width: 100%;">
+                        
+                        <table style="width: 100%;">
+                          {% for iLearned in experience.iLearned %}
+                          <div style="float: left; width: 20%; text-align: center;">
+                            <img src="{{url_for('static', filename= 'assets/img/' + iLearned.img + '-qa.png')}}"
+                              style="width: 30px;" />
+                            <div>{{iLearned.text}}</div>
+                          </div>
+                          {% endfor %}
+                          
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endif %}
+                </table>
+                <table style="width: 100%;">
+                  <tr style="width: 100%;">
+                    <td style="width: 15%;"></td>
+                    <td style="width: 85%;">
+                      {% if experience != experiences[experiences|length - 1] %}
+                      <hr />{% endif %}
+                    </td>
+                  </tr>
+                </table>
+                {% endfor %}
+          </div>
+
+          <!-- FORMATIONS -->
+          <div class="lang-en" style="margin-bottom: 50px;">
+            {% set educations= [
+              {'title': 'WEB QUALITY AND PROGRAMMING', 'establishment': 'CONTINOUS TRAINING', 'dates':{'start': '2014', 'end': 'today'}, 'skills':[
+                {'title': 'QA', 'description': 'blog, café-craft, specialized press,…'},
+                {'title': 'Web front', 'description': 'openclassrooms'},
+                {'title': 'Vuejs', 'description': 'Vue Mastery'}
+              ]},
+              {'title': 'MARKETING AND COMMUNICATION COURSES', 'establishment': 'ISEG LILLE - BUSINESS SCHOOL', 'dates':{'start': '2007', 'end': '2012'}, 'skills':[
+                {'title': 'Master', 'description': 'Entrepreneurship specialization'}
+              ]}
+            ] %}
+            <div style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-top: 25px;">
+              Education
+            </div>
+            {% for edu in educations %}
+            <table style="width: 100%; margin: 25px 0px 5px 0px;">
+              <tr style="width: 100%;">
+                <td style="width: 15%; vertical-align: top; text-align: right; padding-right: 20px;">
+                  <div style="display: inline-block;">
+                    <div class="pink" style="font-size: large; font-weight: 500; float: right;">{{ edu.establishment }}</div>
+                  </div>
+                  <div style="color:#1d253b; font-family: Poppins, sans-serif;font-weight: 100;">
+                    <div>{{ edu.dates.start }} - {{ edu.dates.end }}</div>
+                  </div>
+                </td>
+                <td style="width: 85%; vertical-align: top;">
+                  <h3 class="pink" style="font-weight: 500; margin-bottom: 10px"><span class="blue">{{ edu.title }}</span>
+                  </h3>
+                  {% for i in edu.skills %}
+                  <div style="margin-bottom: 15px;">
+                    <span>- </span><span class="pink" style="font-weight:400">{{ i.title }}</span>
+                    <br /><span style="font-weight: 100; color:#000000">{{ i.description }}</span>
+                  </div>
+                  {% endfor %}
+                  {% if edu != educations[educations|length -1] %}<hr />{% endif %}
+                </td>
+              </tr>
+            </table>
+            {% endfor %}
+          </div>
+          
+        </div>
+      </div>
+    </div>
+      <div class="col-md-3">
+        <div class="card card-user">
+          <div class="card-body">
+            <div class="card card-user">
+              <div class="card-body">
+                <p class="card-text">
+                <div class="author">
+                  <div class="block block-one"></div>
+                  <div class="block block-two"></div>
+                  <div class="block block-three"></div>
+                  <div class="block block-four"></div>
+                  <a href="javascript:void(0)" cy-id="user-page-avatar">
+                    <img class="avatar" src="{{url_for('static', filename= 'assets/img/remid.png')}}" alt="...">
+                    <h5>Rémi Dandois</h5>
+                  </a>
+                  <p class="description">
+                    <span class="blue" style="font-weight: 500;">QA Engineer</span>
+                  </p>
+                </div>
+                </p>
+                <div class="card-description lang-en" style="text-align: justify; color: #003366ff;">
+                  I began my journey in the field of computer science as a manual tester, unveiling a realm that swiftly
+                  transformed into an authentic passion.
+                  <br /><br />Step by step, I honed my skills across an expanding array of test categories: from
+                  automated
+                  tests to front-end tests along with API tests, unit tests, security tests, and performance tests....
+                  <br /><br />Moreover, the growing confidence bestowed upon me, by both my clients and my agency,
+                  propelled
+                  me to assume greater responsibilities. This included delivering training, conducting skills
+                  assessments,
+                  leading interviews, participating in technical and business discussions, and ultimately, managing my
+                  own
+                  team.
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="button-container">
+                  <a href="mailto:remi.dandois@gmail.com">
+                    <button class="btn btn-icon btn-round btn-google">
+                      <i class="fab fa-google-plus"></i>
+                    </button>
+                  </a>
+                  <a href="https://www.linkedin.com/in/remi-dandois/">
+                    <button href="https://www.linkedin.com/in/remi-dandois/"
+                      class="btn btn-icon btn-round btn-linkedin">
+                      <i class="fab fa-linkedin"></i>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}

@@ -16,7 +16,7 @@ demo = {
   },
 
   initDocChart: function() {
-    chartColor = "#FFFFFF";
+    chartColor = "#1d253bFFF";
 
     // General configuration for the charts with Line gradientStroke
     gradientChartOptionsConfiguration = {
@@ -90,7 +90,7 @@ demo = {
         datasets: [{
           label: "Active Users",
           borderColor: "#f96332",
-          pointBorderColor: "#FFF",
+          pointBorderColor: "#1d253b",
           pointBackgroundColor: "#f96332",
           pointBorderWidth: 2,
           pointHoverRadius: 4,

@@ -12,7 +12,7 @@ $enable-print-styles:       true !default;
 
 // Color system
 
-$white:    #ffffff !default;
+$white:    #1d253bfff !default;
 $gray-100: #f6f9fc !default;
 $gray-200: #e9ecef !default;
 $gray-300: #e3e3e3 !default;
@@ -115,7 +115,7 @@ $warning-states:       #ff6491 !default;
 $danger-states:        #ec250d !default;
 $black-states:         #1d253b !default;
 
-$background-black:           #1e1e2f !default;
+$background-black:           #f5f6fa !default;
 $background-states-black:    #1e1e24 !default;
 
 // opacity
@@ -895,7 +895,7 @@ $card-border-color:                 rgba($black, .05);
 $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width});
 $card-cap-bg:                       $gray-100 !default;
 $card-bg:                           $white !default;
-$card-black-background:             #27293d !default;
+$card-black-background:             #1d253b !default;
 $card-img-overlay-padding:          1.25rem !default;
 
 //$card-group-margin:                 ($grid-gutter-width / 2);

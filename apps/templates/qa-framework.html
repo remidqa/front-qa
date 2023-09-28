@@ -1,0 +1,548 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header mb-1">
+          <div style="width: 100%; display: inline-block;">
+            <div style="float: left;">
+              <h5 class="card-category">Rémi Dandois QA</h5>
+              <h3 class="card-title">Quality framework presentation</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="typography">
+            <!-- OVERVIEW -->
+            <div id="intro" style="margin-bottom: 50px;">
+              <h1 class="blue"><span style="color: #D346B1">Overview</span></h1>
+              <div style="margin-bottom: 25px; color: #003366ff;">
+                <p style="color: #003366ff; font-size: 1.2em; font-weight: normal;">
+                  The quality framework is a solution to profesionalize quality and indistrualize your strategy. It is
+                  usable by all kind of roles, such as QA, PO or developpers, even your cicd pipelines, and do not
+                  require any technical knowledge.
+                </p>
+              </div>
+              <div
+                style="display: flex; margin-bottom: 25px; background: #f5f6fa; border-radius: 5px; padding: 15px 15px;">
+                <div style="float: left; width: 50%; padding-right: 15px;">
+                  <p style="color: #003366ff; font-weight: normal;">
+                  <div style="color: #D346B1; font-size: 1.2em;">
+                    <div style="margin-bottom: 15px;">Concretely, one action on the framework will :</div>
+                    <ul>
+                      <li style="color: #003366ff; font-weight: 300;">Get tests for the required application
+                        (functional, API, load tests,... even all at once) </li>
+                      <li style="color: #003366ff; font-weight: 300;">Execute the tests and wait for the result</li>
+                      <li style="color: #003366ff; font-weight: 300;">Get and analyse the report</li>
+                      <li style="color: #003366ff; font-weight: 300;">Alert you by chat in case of failure</li>
+                      <li style="color: #003366ff; font-weight: 300;">Store the report in a database</li>
+                      <li style="color: #003366ff; font-weight: 300;">Save the metrics for a graph solution</li>
+                      <li style="color: #003366ff; font-weight: 300;">Update results in the test management solution
+                      </li>
+                    </ul>
+                  </div>
+                  </p>
+                </div>
+                <div style="float: left; width: 50%; padding-left: 15px;">
+                  <p style="color: #003366ff; font-weight: normal;">
+                  <div style="color: #D346B1; font-size: 1.2em;">
+                    <div style="margin-bottom: 15px;">Available features - not exhaustive, there is way too many
+                      possibilities :D</div>
+                    <ul>
+                      <li style="color: #003366ff; font-weight: 300;">Manage dataset by environments</li>
+                      <li style="color: #003366ff; font-weight: 300;">Execute tests for application, dependecies
+                        and/or
+                        consumers</li>
+                      <li style="color: #003366ff; font-weight: 300;">Define test strategy by environment (like run
+                        "load tests" only in preproduction)</li>
+                      <li style="color: #003366ff; font-weight: 300;">Connect to a secret management solution</li>
+                      <li style="color: #003366ff; font-weight: 300;">Use from a chat application (like Slack)</li>
+                      <li style="color: #003366ff; font-weight: 300;">...</li>
+                    </ul>
+                  </div>
+                  </p>
+                </div>
+              </div>
+              <a href="#part-1" class="menu-anchor">
+                <p style="color: #003366ff;">I. The situation</p>
+              </a>
+              <a href="#part-2" class="menu-anchor">
+                <p style="color: #003366ff;">II. Create your own quality framework</p>
+              </a>
+              <a href="#part-2-a" class="menu-anchor">
+                <p style="color: #003366ff; padding-left: 25px;">A. Define your Quality strategy usage as a Gherkin
+                  scenario</p>
+              </a>
+              <a href="#part-2-b" class="menu-anchor">
+                <p style="color: #003366ff; padding-left: 25px;">B. Breakthrough of the GIVEN and WHEN lines</p>
+              </a>
+              <a href="#part-2-c" class="menu-anchor">
+                <p style="color: #003366ff; padding-left: 25px;">C. Tranform your THEN actions into API calls</p>
+              </a>
+              <a href="#part-3" class="menu-anchor">
+                <p style="color: #003366ff;">III. Implmentation</p>
+              </a>
+              <a href="#part-3-a" class="menu-anchor">
+                <p style="color: #003366ff; padding-left: 25px;">A. API</p>
+              </a>
+              <a href="#part-3-b" class="menu-anchor">
+                <p style="color: #003366ff; padding-left: 25px;">B. Slack</p>
+              </a>
+              <a href="#part-3-c" class="menu-anchor">
+                <p style="color: #003366ff; padding-left: 25px;">C. Cicd</p>
+              </a>
+            </div>
+            <!-- THE SITATION -->
+            <div style="margin-bottom: 50px;">
+              <div id="part-1"
+                style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
+                <span class="blue">I. The situation</span>
+              </div>
+              <div style="margin-bottom: 25px; font-size: 1.2em;">
+                <div style="display: flex;">
+                  <div style="float: left; width: 50%;">
+                    <p style="color: #003366ff;">
+                      In all companies, a lot of softwares, applications, API,... are used to perform the quality
+                      strategy.
+                    </p>
+                    <p style="color: #003366ff;">
+                      And all actors of the quality strategy needs to navigate, manually, between all those tools to
+                      complete quality actions.
+                    </p>
+                    <!-- Let's have a look at all applications and users, the posibilities are enormous and things can quickly can become laborious for everyone, -->
+                    <div
+                      style="border-radius: 5px; padding: 15px 0px 0px 0px; display: inline-block; margin-bottom: 25px;">
+                      <p style="color: #D346B1; margin-bottom: 15px;">Let's have a look at all applications and users,
+                        the posibilities are enormous and things can quickly can become laborious for everyone.</p>
+                      <div style="float: left; width: 50%;">
+                        <ul style="list-style-type: none; margin-bottom: 0px;">
+                          <li style="color: #003366ff;">
+                            APPLICATIONS
+                            <ul style="list-style-type: none;">
+                              <li style="color: #003366ff;">For testing
+                                <ul style="list-style-type: none;">
+                                  <li style="color: #003366ff; font-weight: 100;">Functional Tests</li>
+                                  <li style="color: #003366ff; font-weight: 100;">API tests</li>
+                                  <li style="color: #003366ff; font-weight: 100;">Unit Tests</li>
+                                  <li style="color: #003366ff; font-weight: 100;">...</li>
+                                </ul>
+                              </li>
+                              <li style="color: #003366ff;">For repoting
+                                <ul style="list-style-type: none;">
+                                  <li style="color: #003366ff; font-weight: 100;">Monitoring</li>
+                                  <li style="color: #003366ff; font-weight: 100;">Chat alerts</li>
+                                  <li style="color: #003366ff; font-weight: 100;">History in database</li>
+                                  <li style="color: #003366ff; font-weight: 100;">...</li>
+                                </ul>
+                              </li>
+                              <li style="color: #003366ff;">For managing
+                                <ul style="list-style-type: none;">
+                                  <li style="color: #003366ff; font-weight: 100;">Bug tracking</li>
+                                  <li style="color: #003366ff; font-weight: 100;">Test book management</li>
+                                  <li style="color: #003366ff; font-weight: 100;">Sprint validation</li>
+                                  <li style="color: #003366ff; font-weight: 100;">...</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                      <div style="float: left; width: 50%;">
+                        <ul style="list-style-type: none;">
+                          <li style="color: #003366ff;">
+                            USERS
+                            <ul>
+                              <li style="color: #003366ff; font-weight: 100;">QA</li>
+                              <li style="color: #003366ff; font-weight: 100;">PO</li>
+                              <li style="color: #003366ff; font-weight: 100;">Developper</li>
+                              <li style="color: #003366ff; font-weight: 100;">Cicd pipeline</li>
+                              <li style="color: #003366ff; font-weight: 100;">...</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="float: left; width: 50%; padding: 0px 0px 0px 15px; display: flex;">
+                    <img src="{{url_for('static', filename= 'assets/img/cloud-qa.png')}}" style="margin: auto 0px;" />
+                  </div>
+                </div>
+                <div style="display: flex; background: #f5f6fa; border-radius: 5px; padding: 15px 15px;">
+                  <div style="width: 100%;">
+                    <div style="width: 100%;">
+                      <div style="width: 50%; float: left; color: #D346B1;">Risks</div>
+                      <div style="width: 50%; float: left; color: #D346B1">Consequences</div>
+                    </div>
+                    <div style="width: 100%;">
+                      <div style="width: 50%; float: left;">
+                        <ul>
+                          <li style="color: #003366ff; font-weight: 300;">Increase the number of errors due to manual
+                            actions</li>
+                          <li style="color: #003366ff; font-weight: 300;">Lower the efficiency of the users because they
+                            need time and focus on repetitive tasks</li>
+                        </ul>
+                      </div>
+                      <div style="width: 50%; float: left;">
+                        <ul>
+                          <li style="color: #003366ff; font-weight: 300;">Lower the attractivity and reliability of your
+                            quality strategy</li>
+                          <li style="color: #003366ff; font-weight: 300;">Limit yourself and exclude features from your
+                            quality strategy to gain time and labor</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- HOW TO CREATE -->
+            <div style="margin-bottom: 50px;">
+
+              <div style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
+
+                <span id="part-2" class="blue">Create your own quality framework</span>
+              </div>
+              <div style="margin-bottom: 25px; font-size: 1.2em;">
+                <div id="part-2-a">
+                  <p style="color: #D346B1; font-size: 1.2em; font-weight: 500; margin-bottom: 25px;">
+                    A. Define your Quality strategy usage as a Gherkin scenario
+                  </p>
+                </div>
+                <div style="color: #003366ff;">
+                  <div>
+                    <p style="color: #003366ff;">Start by defining your most commun use case</p>
+                  </div>
+                  <div>
+                    <p style="color: #003366ff;">Filter from your users, applications and daily routine to find a
+                      simple, yet significant, use case of your quality strategy</p>
+                    <p style="color: #003366ff;">For example :</p>
+                    {% set gherkin_scenario = [
+                    {
+                    "title": "given", "description": "I am a QA in the e-commerce site team",
+                    "explanation": {"type": "text", "value": [
+                    "You are capable to perform actions",
+                    "AND you are aware of the events in the team"
+                    ]}
+                    },
+                    {
+                    "title": "and", "description": "I have access to all applications required to perform this quality
+                    workflow",
+                    "explanation": {"type": "text", "value": [
+                    "You have accesses on all appllications, have required read/write authorizations on them and your
+                    tests datasets for the given environment are up-to-date"
+                    ]}
+                    },
+                    {
+                    "title": "when", "description": "A micro-application of the e-commerce site is updated",
+                    "explanation": {"type": "text", "value": [
+                    "This is whre you use the Quality framwork. You can trigger it manually or it could be implemented
+                    in the cicd workflow process"
+                    ]}
+                    },
+                    {
+                    "title": "then", "description": "I get the list of non-regression tests to perform",
+                    "explanation": { "type": "requests", "value": [
+                    {"method": "GET", "application": "Jira", "path": "/tests-list/application='e-commerce'", "text":
+                    "Fetch the list of tests of your non-regression campaign"}
+                    ]}
+                    },
+                    {
+                    "title": "and", "description": "I execute automated non-regression tests",
+                    "explanation": { "type": "requests", "value": [
+                    {"method": "POST", "application": "Newman", "path": "/run", "text": "Give the list of non-regression
+                    API tests"},
+                    {"method": "POST", "application": "Cypress", "path": "/run", "text": "Give the list of
+                    non-regression functional tests"}
+                    ]}
+                    },
+                    {
+                    "title": "and", "description": "I wait for the results and I analyse reports",
+                    "explanation": { "type": "requests", "value": [
+                    {"method": "GET", "application": "Newman", "path":
+                    "/report?report='newman-e_commerce-2023/24/07_11h30m'", "text": "Once the execution ended, fetch the
+                    full report"},
+                    {"method": "GET", "application": "Cypress", "path":
+                    "/report?report='cypress-e_commerce-2023/24/07_11h30m'", "text": "Once the execution ended, fetch
+                    the full report"}
+                    ]}
+                    },
+                    {
+                    "title": "and", "description": "I notify my team in case of 'failure(s)'",
+                    "explanation": { "type": "requests", "value": [
+                    {"method": "POST", "application": "Slack", "path": "/message", "text": "send a message to your team
+                    channel if >= 1 test status is = 'failure'"}
+                    ]}
+                    },
+                    {
+                    "title": "and", "description": "I update status in the tests management application",
+                    "explanation": { "type": "requests", "value": [
+                    {"method": "POST", "application": "jira", "path": "/test-run", "text": "Create a new test run for
+                    all executed tests"},
+                    {"method": "PUT", "application": "jira", "path": "/test-run", "text": "Update status and all report
+                    for all executed tests"}
+                    ]}
+                    },
+                    {
+                    "title": "and", "description": "I check reports are available",
+                    "explanation": { "type": "requests", "value": [
+                    {"method": "POST", "application": "Mongo-db", "path": "/insert", "text": "Archive the reports and
+                    detailed informations in a database"}
+                    ]}
+                    },
+                    {
+                    "title": "and", "description": "I check execution metrics are available",
+                    "explanation": { "type": "requests", "value": [
+                    {"method": "POST", "application": "Datadog", "path": "/event", "text": "send metrics for all
+                    executed tests in the monitoring tool to be able to graph datas"}
+                    ]}
+                    }
+                    ] %}
+                    {% set then_array = [] %}
+                    {% for i in gherkin_scenario %}
+                    {% if i['title'] == 'then' %}
+                    {% set temp = then_array.append(loop.index) %}
+                    {% endif %}
+                    {% endfor %} {% set then_index = then_array[0] %}
+                    <div
+                      style="margin-bottom: 50px; background: #f5f6fa; border-radius: 5px; padding: 25px; display: inline-block; font-size: 0.8em ;font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;">
+                      <p style="color: #003366ff;">Scenario: Complete a non-regression check</p>
+                      <div style="margin-left: 25px;">
+                        {% for i in gherkin_scenario %}
+                        {% if loop.index >= then_index %}<a href="{{'#gherkin'+loop.index|string}}" class="gherkin-anchor">{% endif %}
+                          <p style="color: #003366ff"
+                            class="{{'gherkin-and' if i['title'] == 'and' else 'gherkin-section' }}"><span
+                              style="font-weight: bold;">{{ i['title']|upper }} </span>{{ i['description'] }}</p>
+                        {% if loop.index >= then_index %}</a>{% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                    <div id="part-2-b">
+                      <p style="color: #D346B1; font-size: 1.2em; font-weight: 500; margin-bottom: 25px;">
+                        B. Breakthrough of the GIVEN and WHEN lines
+                      </p>
+                    </div>
+                    <div style="margin-bottom: 50px">
+
+                      <p style="color: #003366ff;">
+                        We could detail a little more those lines with the following explanations :
+                      <ul>
+                        <li style="font-weight: 300; color:#003366ff">You need to have acces to all testing applications
+                        </li>
+                        <li style="font-weight: 300; color:#003366ff">You need to have acces to all related applications
+                          (monitoring, tests management, chat,...)</li>
+                        <li style="font-weight: 300; color:#003366ff">You need to be in touch with the team to know when
+                          the update is available and on which environment.</li>
+                        <li style="font-weight: 300; color:#003366ff">You need to have acces to all testing applications
+                        </li>
+                      </ul>
+                      </p>
+                    </div>
+
+                    <div id="part-2-c">
+                      <p style="color: #D346B1; font-size: 1.2em; font-weight: 500; margin-bottom: 25px;">
+                        C. Tranform your THEN actions into API calls
+                      </p>
+                      <div style="margin-bottom: 25px; background: #fcdee3; border-radius: 5px; padding: 15px;">
+                        /!\ All routes below are for demonstration only. They do not exists and can't be used as if. If
+                        you want to recreate, make sure to use the official documentation of your applications. /!\
+                      </div>
+                      {% for i in gherkin_scenario %}
+                      {% if loop.index >= then_index %}
+                      <div class="{{ 'gherkin-and' if i['title'] == 'and' else 'gherkin-section' }}"
+                        style="margin-bottom: 25px;">
+                        <div>
+                          <p id="{{'gherkin'+loop.index|string}}" class="pink"
+                            style="font-size: 1.1em; font-weight: 400; color: #003366ff;">
+                            <span style="font-weight: 600;">{{ i["title"]|upper }} </span>{{ i["description"] }}
+                          </p>
+                        </div>
+                        <div style="font-weight: 300; font-size: 0.8em;">
+                          {% if i['explanation']['type'] == 'text' %}
+                          {{ i['explanation']['value'] }}
+                          {% elif i['explanation']['type'] == 'requests' %}
+                          {% for req in i['explanation']['value'] %}
+                          <div>
+                            <div><span class="pink">Application</span><span> : {{ req['application'] }}</span></div>
+                            <div style="display: flex; margin-bottom: 15px;">
+                              <div style="float: left;">
+                                <div class="{{ 'method-span' + ' ' + req['method']|lower+'-method' }}"
+                                  style="float: left; padding: 5px;">{{ req['method'] }}</div>
+                                <div
+                                  style="background-color: #f5f6fa; border-radius: 0 5px 5px 0; float: left; padding: 5px;">
+                                  {{ req['path'] }}</div>
+                              </div>
+                              <div style="float: left; padding: 5px;">
+                                <span>: {{ req['text'] }}</span>
+                              </div>
+                            </div>
+                          </div>
+                          {% endfor %}
+                          {% endif %}
+                        </div>
+                      </div>
+                      {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- RESULT -->
+
+            </div>
+            <div style="margin-bottom: 50px;">
+              <div id="part-3"
+                style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
+                <span class="blue">III. Implmentation</span>
+              </div>
+              <div id="part-3-a" style="margin-bottom: 50px; font-size: 1.2em;">
+                <p style="color: #D346B1; font-size: 1.2em; font-weight: 500; margin-bottom: 15px;">
+                  A. API call
+                </p>
+                <p style="color: #003366ff; margin-bottom: 25px; text-align: justify;">
+                  Once all your API calls linked, the most common way to use it is to add a request in Postman.
+                  For this example we simply created an application listening to a '/run' route on the 'post' method.
+                  This route takes 2 mandatory parameters datas in the body to be able to trigger an execution : 'app' and 'env' witch are, 
+                  in our case, the 2 scopes management all our strategy quality
+                </p>
+                <div style="width: 100%; text-align: center;">
+                  <img src="{{url_for('static', filename= 'assets/img/postman-integration.png')}}" style="box-shadow: 16px 16px 32px -20px #000000;"/>
+                </div>
+              </div>
+              <div id="part-3-b" style="margin-bottom: 50px; font-size: 1.2em;">
+                <p style="color: #D346B1; font-size: 1.2em; font-weight: 500; margin-bottom: 15px;">
+                  B. Use from Discord
+                </p>
+                <p style="color: #003366ff; margin-bottom: 25px;">
+                  You can easely add a feature in your professional chat application to trigger a non-regression execution, here is an example in Discord.
+                </p>
+                <div class="carousel" data-flickity='{ "wrapAround": true }' style="box-shadow: 16px 16px 32px -20px #000000;">
+                  <img src="{{url_for('static', filename= 'assets/img/carousel/discord1.png')}}" />
+                  <img src="{{url_for('static', filename= 'assets/img/carousel/discord2.png')}}" />
+                  <img src="{{url_for('static', filename= 'assets/img/carousel/discord3.png')}}" />
+                </div>
+              </div>
+              <div id="part-3-c" style="margin-bottom: 25px; font-size: 1.2em;">
+                <p style="color: #D346B1; font-size: 1.2em; font-weight: 500; margin-bottom: 15px;">
+                  C. Cicd
+                </p>
+                <p style="color: #003366ff; text-align: justify; margin-bottom: 25px;">
+                  Finaly, another super useful integration for this quality framework is to be able to use it from the cicd pipeline.
+                  A good start is to add the API after a deployment, to perform your non-regression checks as soon as possible. you just need to have access to the mandatory parameters : 'app' and 'env'.
+                  The 2 informations should already exists, you just need some consistency in your naming pratices and it should do the trick.
+                  You can choose for the pipeline to wait or not for the tests results, in either way you already setted up alerts and monitors, you will know about a failure in the moment.
+                </p>
+                <div style="width: 100%; text-align: center;">
+                  <img src="{{url_for('static', filename= 'assets/img/cicd-workflow.png')}}" style="box-shadow: 16px 16px 32px -20px #000000; padding: 25px; background: #ffffff;" />
+                </div>
+              </div>
+              <!-- <div class="carousel" data-flickity='{ "wrapAround": true }'>
+                <img src="{{url_for('static', filename= 'assets/img/1.png')}}" carousel-id="0" />
+                <img src="{{url_for('static', filename= 'assets/img/2.png')}}" carousel-id="1" />
+                <img src="{{url_for('static', filename= 'assets/img/3.png')}}" carousel-id="2" />
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<!-- <script>
+  function updateCarouselText() {
+    console.log('ok')
+    let selectedImg = document.querySelector("img[class='is-selected']")
+    let selecteImgId = selectedImg.getAttribute('carousel-id')
+    let carouselTexts = document.getElementsByClassName('carousel-text')
+    for (i in carouselTexts) {
+      if (typeof carouselTexts[i] == 'object') {
+        if (carouselTexts[i].getAttribute('carousel-id') == selecteImgId) { carouselTexts[i].classList.remove("carousel-text-hidden") }
+        else { carouselTexts[i].classList.add("carousel-text-hidden") }
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    let next = document.querySelector("button[aria-label='Next']")
+    let previous = document.querySelector("button[aria-label='Previous']")
+    next.addEventListener('click', updateCarouselText)
+    previous.addEventListener('click', updateCarouselText)
+  });
+</script> -->
+<style>
+  .carousel-text-hidden {
+    display: none;
+  }
+
+  /* external css: flickity.css */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: sans-serif;
+  }
+
+  .carousel {
+    background: #EEE;
+  }
+
+  .carousel img {
+    display: block;
+    height: 200px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .carousel img {
+      height: 500px;
+    }
+  }
+
+  .menu-anchor {
+    text-decoration: none;
+  }
+
+  .menu-anchor:hover {
+    text-decoration: underline;
+    text-decoration-color: #003366ff
+  }
+
+  .gherkin-anchor {
+    text-decoration: none;
+  }
+
+  .gherkin-anchor:hover {
+    text-decoration: underline;
+    text-decoration-color: #003366ff
+  }
+
+  .gherkin-section {
+    margin-left: 0px
+  }
+
+  .gherkin-and {
+    margin-left: 25px
+  }
+
+  .method-span {
+    border-radius: 5px 0 0 5px;
+  }
+
+  .get-method {
+    background-color: #eaf2ec;
+  }
+
+  .post-method {
+    background-color: #f9f0ea;
+  }
+
+  .put-method {
+    background-color: #e8f4f4;
+  }
+</style>
+{% endblock content %}

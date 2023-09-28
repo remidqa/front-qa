@@ -8,7 +8,7 @@
 .selector select {
     width: 380px;
     height: 17.2em;
-    background-color: #fff !important;
+    background-color: #1d253b !important;
 }
 
 .selector-available, .selector-chosen {
@@ -30,7 +30,7 @@
 .selector-chosen h2 {
     margin-bottom: 0;
     background: #1f2937;
-    color: #fff;
+    color: #1d253b;
     font-size: 20px;
     padding: 8px;
 }
@@ -38,7 +38,7 @@
 .selector .selector-available h2 {
     margin-bottom: 0;
     background: #644f97;
-    color: #fff;
+    color: #1d253b;
     font-size: 20px;
     padding: 8px;
 }
@@ -439,7 +439,7 @@ span.clearable-file-input label {
 
 .calendar td.selected a {
     background: #79aec8;
-    color: #fff;
+    color: #1d253b;
 }
 
 .calendar td.nonday {

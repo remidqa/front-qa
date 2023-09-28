@@ -248,7 +248,7 @@ fieldset.collapsed h2 {
 }
 
 fieldset .collapse-toggle {
-    color: #fff;
+    color: #1d253b;
 }
 
 fieldset.collapsed .collapse-toggle {
@@ -306,7 +306,7 @@ body.popup .submit-row {
     padding: 10px 15px;
     height: 15px;
     line-height: 15px;
-    color: #fff;
+    color: #1d253b;
 }
 
 .submit-row a.closelink {
@@ -317,7 +317,7 @@ body.popup .submit-row {
     height: 15px;
     line-height: 15px;
     margin: 0 0 0 5px;
-    color: #fff;
+    color: #1d253b;
 }
 
 .submit-row a.deletelink:focus,
@@ -427,7 +427,7 @@ body.popup .submit-row {
 
 .inline-related fieldset {
     margin: 0;
-    /*background: #fff;*/
+    /*background: #1d253b;*/
     border: none;
     width: 100%;
 }
@@ -439,7 +439,7 @@ body.popup .submit-row {
     text-align: left;
     font-weight: bold;
     background: #bcd;
-    color: #fff;
+    color: #1d253b;
 }
 
 .inline-group .tabular fieldset.module {

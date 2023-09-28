@@ -1,0 +1,306 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header mb-1">
+          <div style="width: 100%; display: inline-block;">
+            <div style="float: left;">
+              <h5 class="card-category">Rémi Dandois QA</h5>
+              <h3 class="card-title">Quality framework presentation</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="typography">
+            <!-- OVERVIEW -->
+            <div style="margin-bottom: 50px;">
+              <h1 class="blue"><span style="color: #D346B1">Overview</span></h1>
+              <div style="margin-bottom: 25px; color: #003366ff;">
+                <p style="color: #003366ff; font-size: 1.2em; font-weight: normal;">
+                  The quality framework is a solution to profesionalize quality and indistrualize your strategy. It is
+                  usable by all kind of roles, such as QA, PO or developpers, even your cicd pipelines, and do not
+                  require any technical knowledge.
+                </p>
+              </div>
+              <div
+                style="display: flex; margin-bottom: 25px; background: #f5f6fa; border-radius: 5px; padding: 15px 15px;">
+                <div style="float: left; width: 50%; padding-right: 15px;">
+                  <p style="color: #003366ff; font-weight: normal;">
+                  <div style="color: #D346B1; font-size: 1.2em;">
+                    <div style="margin-bottom: 15px;">Concretely, one action on the framework will :</div>
+                    <ul>
+                      <li style="color: #003366ff; font-weight: 300;">Get tests for the required application
+                        (functional, API, load tests,... even all at once) </li>
+                      <li style="color: #003366ff; font-weight: 300;">Execute the tests and wait for the result</li>
+                      <li style="color: #003366ff; font-weight: 300;">Get and analyse the report</li>
+                      <li style="color: #003366ff; font-weight: 300;">Alert you by chat in case of failure</li>
+                      <li style="color: #003366ff; font-weight: 300;">Store the report in a database</li>
+                      <li style="color: #003366ff; font-weight: 300;">Save the metrics for a graph solution</li>
+                      <li style="color: #003366ff; font-weight: 300;">Update results in the test management solution
+                      </li>
+                    </ul>
+                  </div>
+                  </p>
+                </div>
+                <div style="float: left; width: 50%; padding-left: 15px;">
+                  <p style="color: #003366ff; font-weight: normal;">
+                  <div style="color: #D346B1; font-size: 1.2em;">
+                    <div style="margin-bottom: 15px;">Available features - not exhaustive, there is way too many
+                      possibilities :D</div>
+                    <ul>
+                      <li style="color: #003366ff; font-weight: 300;">Manage dataset by environments</li>
+                      <li style="color: #003366ff; font-weight: 300;">Execute tests for application, dependecies
+                        and/or
+                        consumers</li>
+                      <li style="color: #003366ff; font-weight: 300;">Define test strategy by environment (like run
+                        "load tests" only in preproduction)</li>
+                      <li style="color: #003366ff; font-weight: 300;">Connect to a secret management solution</li>
+                      <li style="color: #003366ff; font-weight: 300;">Use from a chat application (like Slack)</li>
+                      <li style="color: #003366ff; font-weight: 300;">...</li>
+                    </ul>
+                  </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- THE SITATION -->
+            <div style="margin-bottom: 50px;">
+              <div style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
+                <span class="blue">The situation</span>
+              </div>
+              <div style="margin-bottom: 25px; font-size: 1.2em;">
+                <div style="display: flex;">
+                  <div style="float: left; width: 50%;">
+                    <p style="color: #003366ff;">
+                      In all companies, a lot of softwares, applications, API,... are used to perform the quality
+                      strategy.
+                    </p>
+                    <p style="color: #003366ff;">
+                      And all actors of the quality strategy needs to navigate, manually, between all those tools to
+                      complete quality actions.
+                    </p>
+                    <!-- Let's have a look at all applications and users, the posibilities are enormous and things can quickly can become laborious for everyone, -->
+                    <div
+                      style="border-radius: 5px; padding: 15px 0px 0px 0px; display: inline-block; margin-bottom: 25px;">
+                      <p style="color: #D346B1; margin-bottom: 15px;">Let's have a look at all applications and users,
+                        the posibilities are enormous and things can quickly can become laborious for everyone.</p>
+                      <div style="float: left; width: 50%;">
+                        <ul style="list-style-type: none; margin-bottom: 0px;">
+                          <li style="color: #003366ff;">
+                            APPLICATIONS
+                            <ul style="list-style-type: none;">
+                              <li style="color: #003366ff;">For testing
+                                <ul style="list-style-type: none;">
+                                  <li style="color: #003366ff; font-weight: 100;">Functional Tests</li>
+                                  <li style="color: #003366ff; font-weight: 100;">API tests</li>
+                                  <li style="color: #003366ff; font-weight: 100;">Unit Tests</li>
+                                  <li style="color: #003366ff; font-weight: 100;">...</li>
+                                </ul>
+                              </li>
+                              <li style="color: #003366ff;">For repoting
+                                <ul style="list-style-type: none;">
+                                  <li style="color: #003366ff; font-weight: 100;">Monitoring</li>
+                                  <li style="color: #003366ff; font-weight: 100;">Chat alerts</li>
+                                  <li style="color: #003366ff; font-weight: 100;">History in database</li>
+                                  <li style="color: #003366ff; font-weight: 100;">...</li>
+                                </ul>
+                              </li>
+                              <li style="color: #003366ff;">For managing
+                                <ul style="list-style-type: none;">
+                                  <li style="color: #003366ff; font-weight: 100;">Bug tracking</li>
+                                  <li style="color: #003366ff; font-weight: 100;">Test book management</li>
+                                  <li style="color: #003366ff; font-weight: 100;">Sprint validation</li>
+                                  <li style="color: #003366ff; font-weight: 100;">...</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                      <div style="float: left; width: 50%;">
+                        <ul style="list-style-type: none;">
+                          <li style="color: #003366ff;">
+                            USERS
+                            <ul>
+                              <li style="color: #003366ff; font-weight: 100;">QA</li>
+                              <li style="color: #003366ff; font-weight: 100;">PO</li>
+                              <li style="color: #003366ff; font-weight: 100;">Developper</li>
+                              <li style="color: #003366ff; font-weight: 100;">Cicd pipeline</li>
+                              <li style="color: #003366ff; font-weight: 100;">...</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="float: left; width: 50%; padding: 0px 0px 0px 15px; display: flex;">
+                    <img src="{{url_for('static', filename= 'assets/img/cloud-qa.png')}}" style="margin: auto 0px;" />
+                  </div>
+                </div>
+                <div style="display: flex; background: #f5f6fa; border-radius: 5px; padding: 15px 15px;">
+                  <div style="width: 100%;">
+                    <div style="width: 100%;">
+                      <div style="width: 50%; float: left; color: #D346B1;">Risks</div>
+                      <div style="width: 50%; float: left; color: #D346B1">Consequences</div>
+                    </div>
+                    <div style="width: 100%;">
+                      <div style="width: 50%; float: left;">
+                        <ul>
+                          <li style="color: #003366ff; font-weight: 300;">Increase the number of errors due to manual
+                            actions</li>
+                          <li style="color: #003366ff; font-weight: 300;">Lower the efficiency of the users because they
+                            need time and focus on repetitive tasks</li>
+                        </ul>
+                      </div>
+                      <div style="width: 50%; float: left;">
+                        <ul>
+                          <li style="color: #003366ff; font-weight: 300;">Lower the attractivity and reliability of your
+                            quality strategy</li>
+                          <li style="color: #003366ff; font-weight: 300;">Limit yourself and exclude features from your
+                            quality strategy to gain time and labor</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div style="float: left; width: 40%; text-align: center;">
+                  <span style="color: #003366ff; margin: 1em 0px; font-weight: 300;">Increase the number of errors due to manual actions</span>
+                  <div style="margin: 15px 0px;">
+                    <img src="{{url_for('static', filename= 'assets/img/plus.png')}}" style="height: 2em; margin: auto; display: block;" />
+                  </div>
+                  <span style="color: #003366ff; margin: 1em 0px; font-weight: 300;">Lower the efficiency of quality stretegy's users because they need time and focus on repetitive tasks</span>
+                </div>
+                <div style="float: left; width: 20%; float: left; padding: 0px 15px; align-content: center; display: grid;">
+                  <img src="{{url_for('static', filename= 'assets/img/arrow.png')}}" style="width: 100%; align-content: center; height: 2em;"/>
+                </div>
+                <div style="float: left; width: 40%; align-content: center; display: grid; text-align: center;">
+                  Lower the attractivity and reliability of your quality strtegy
+                </div> -->
+                </div>
+                <!-- <div style="text-align: center; padding: 0px 15px;">
+                <img src="{{url_for('static', filename= 'assets/img/cloud-qa.png')}}" style="max-width: 50vw;"/>
+              </div> -->
+              </div>
+            </div>
+            <!-- HOW TO CREATE -->
+            <div style="margin-bottom: 50px;">
+              <div style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
+                <span class="blue">How does it works ?</span>
+              </div>
+              <div style="margin-bottom: 25px; font-size: 1.2em;">
+                <div style="color: #003366ff;">
+                  <div>
+                    <p style="color: #003366ff;">Start by defining your most commun use case</p>
+                  </div>
+                  <div>
+                    <p style="color: #003366ff;">Filter from your users, applications and daily routine to find a
+                      simple, yet significant, use case of your quality strategy</p>
+                    <p style="color: #003366ff;">For example :</p>
+                    {% set gherkin_scenario = {
+                    "scenario": "Complete a non-regression check",
+                    "given": "I am a QA in the e-commerce site team",
+                    "given_and": [
+                    "I have access to all applications required to perform this quality workflow"
+                    ],
+                    "when": "A micro-application of the e-commerce site is updated",
+                    "when_and": [],
+                    "then": "I get the list of non-regression tests to perform",
+                    "then_and": [
+                    "I execute automated non-regression tests",
+                    "I wait for the results and I analyse reports",
+                    "I notify my team in case of 'failure(s)'",
+                    "I update status in the tests management application",
+                    "I check reports are available",
+                    "I check execution metrics are available"
+                    ]
+                    } %}
+                    <div style="display: inline-block; width: 100%;">
+                      <div style="float: left; width: 30%;">
+                        <div
+                          style="margin-bottom: 25px; background: #f5f6fa; border-radius: 5px; padding: 25px; display: inline-block; font-size: 0.8em ;font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;">
+                          <p style="color: #003366ff;">Scenario: {{ gherkin_scenario['scenario'] }}</p>
+                          <a href="#given" class="gherkin-anchor">
+                            <p style="color: #003366ff; margin-left: 25px;"><span style="font-weight: bold;">GIVEN
+                              </span>
+                            </p>
+                          </a>
+                          {% if gherkin_scenario['given_and']|length != 0 %}
+                          {% for given_and in gherkin_scenario['given_and'] %}
+                          <a href="{{'#given'+ loop.index|string }}" class="gherkin-anchor">
+                            <p style="color: #003366ff; padding-left:50px"><span>AND </span>{{ given_and }}</p>
+                          </a>
+                          {% endfor %}
+                          {% endif %}
+                          <a href="#when" class="gherkin-anchor">
+                            <p style="color: #003366ff; margin-left: 25px;"><span style="font-weight: bold;">WHEN
+                              </span>{{ gherkin_scenario['when'] }}</p>
+                          </a>
+                          {% if gherkin_scenario['when_and']|length != 0 %}
+                          {% for when_and in gherkin_scenario['when_and'] %}
+                          <a href="{{'#when'+ loop.index|string }}" class="gherkin-anchor">
+                            <p style="color: #003366ff; padding-left:50px"><span>AND </span>{{ when_and }}</p>
+                          </a>
+                          {% endfor %}
+                          {% endif %}
+                          <a href="#then" class="gherkin-anchor">
+                            <p style="color: #003366ff; margin-left: 25px;"><span style="font-weight: bold;">THEN
+                              </span>{{ gherkin_scenario['then'] }}</p>
+                          </a>
+                          {% if gherkin_scenario['then_and']|length != 0 %}
+                          {% for then_and in gherkin_scenario['then_and'] %}
+                          <a href="{{'#then'+ loop.index|string }}" class="gherkin-anchor">
+                            <p style="color: #003366ff; padding-left:50px"><span>AND </span>{{ then_and }}</p>
+                          </a>
+                          {% endfor %}
+                          {% endif %}
+                        </div>
+                      </div>
+                      <div style="float: left; width: 30%;">
+                        dsadas
+                      </div>
+                    </div>
+                    <!-- <div>
+                      <div
+                        style="border-bottom: #003366ff solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
+                        <span id="given" class="blue">GIVEN I am a QA in the e-commerce site team</span>
+                      </div>
+                      <div>blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla</div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <!-- RESULT -->
+              <div style="margin-bottom: 50px;">
+                <div
+                  style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
+                  <span class="blue">How does it works ?</span>
+                </div>
+                <div style="margin-bottom: 25px; font-size: 1.2em;">
+                  blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla
+                  blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla
+                  blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla
+                  blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla
+                  blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <style>
+    .gherkin-anchor {
+      text-decoration: none;
+    }
+
+    .gherkin-anchor:hover {
+      text-decoration: underline;
+      text-decoration-color: #003366ff
+    }
+  </style>
+  {% endblock content %}

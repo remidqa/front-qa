@@ -9,6 +9,8 @@ $(document).ready(function() {
         $sidebar_responsive = $('body > .navbar-collapse');
         sidebar_mini_active = true;
         white_color = false;
+        black_color = false;
+        //white_color = true;
 
         window_width = $(window).width();
 
@@ -73,7 +75,31 @@ $(document).ready(function() {
             }, 1000);
         });
 
+        function whiteTheme(){
+            var $btn = $(this);
+
+            if (white_color == true) {
+
+                $('body').addClass('change-background');
+                setTimeout(function() {
+                    $('body').removeClass('change-background');
+                    $('body').removeClass('white-content');
+                }, 900);
+                white_color = false;
+            } else {
+
+                $('body').addClass('change-background');
+                setTimeout(function() {
+                    $('body').removeClass('change-background');
+                    $('body').addClass('white-content');
+                }, 900);
+
+                white_color = true;
+            }
+        }
+        //whiteTheme()
         $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
+            
             var $btn = $(this);
 
             if (white_color == true) {
@@ -122,7 +148,35 @@ $(document).ready(function () {
         $('.switch input').prop("checked", true)
     }
 
+    function whiteWhite() {
+        light_color = true;//localStorage.getItem("light_color");
 
+        if (light_color === "true") {
+        //    localStorage.setItem("light_color", "false");
+
+            $('body').addClass('change-background');
+            
+            $('body').removeClass('change-background');
+            $('body').removeClass('white-content');
+            //setTimeout(function () {
+            //    $('body').removeClass('change-background');
+            //    $('body').removeClass('white-content');
+            //}, 400);
+
+        } else {
+            localStorage.setItem("light_color", "true");
+
+            $('body').addClass('change-background');
+            
+            $('body').removeClass('change-background');
+            $('body').addClass('white-content');
+            //setTimeout(function () {
+            //    $('body').removeClass('change-background');
+            //    $('body').addClass('white-content');
+            //}, 400);
+        }
+    }
+    whiteWhite()
     $('.switch input').on("change", function () {
         light_color = localStorage.getItem("light_color");
 

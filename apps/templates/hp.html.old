@@ -1,0 +1,105 @@
+<head>
+  <link rel="icon" type="image/x-icon" href="{{url_for('static', filename= 'assets/img/logo-qualicorn.png')}}">
+</head>
+<body style="border: none; padding: 0; margin: 0;">
+  <div
+    style="width: 100vw; height: 100vh; background:url(/static/assets/img/landinqpage3.png); background-size: cover;">
+    <div style="width: 100vw; height: 100vh; background:rgba(0, 0, 0, 0.1)">
+      <div style="width: 100vw; height: 100vh; vertical-align: middle; display: table-cell;">
+        <div
+          style="position: absolute; top: 0; left: 0; width: 100vw; background-color: #003366ff; text-align: left; color: white; font-size: x-large; font-weight: bold;">
+          <div style="padding: 5px 0px 0px 0px;">
+              <img src="{{url_for('static', filename= 'assets/img/logo-qualicorn.png')}}" style="width: 0.7em; margin: 0px 15px;" />
+            {% set links= [
+              {'title': 'My Resume', 'link': 'pages_resume'},  
+              {'title': 'Quality Dashboard', 'link': 'pages_dashboard'},  
+              {'title': 'Documentation', 'link': 'doc_functional'},  
+              {'title': 'Live Demo', 'link': 'live_demo'},  
+            ] %}  
+            {% for link in links %}
+            <span style="margin: 0px 15px;"><a href="{{url_for(link.link)}}" style="font-size: large; color: white; text-decoration: none; font-weight: 100; font-family: Poppins, sans-serif;">{{ link.title }}</a></span>
+            {% if link != links[links|length -1] %}<span> | </span>{% endif %}
+            {% endfor %}
+            <div style="height: 2px; background: linear-gradient(90deg, rgba(191,65,170,1) 0%, rgba(246,201,239,1) 100%); width: 100%; margin-top: 5px;"></div>
+            </div>
+        </div>
+        <div style="width: 50vw; margin-left: 25vw; display: flex;">
+          <div style="float: left; display: table; vertical-align: middle; width: 50%;">
+            <div style="vertical-align: middle; display: table-cell;">
+              <div>
+                <h1 style="color: white; font-family: Poppins, sans-serif; text-align: justify;">
+                  Welcome, let's discover the quality framework for your cicd deployment !
+                </h1>
+                <span style="color: #ffffff; text-align: justify; font-size: large; font-weight: 400; font-family: Poppins, sans-serif;">
+                  All companies have their quality workflows and strategies, but how to execute it in dedicated tool, indistrualize quality, and step up? Let's have a look   
+                </span>
+              </div>
+              <div style="text-align: left; margin-top: 25px;">
+                <a href="{{url_for('pages_api_qa_presentation')}}">
+                  <button class="blue-btn">Getting stated: Tool presentation</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div style="float: right; width: 50%;">
+            <img src="{{url_for('static', filename= 'assets/img/illustration.png')}}"
+            style="max-width: 80%; float: right;" />
+          </div>
+        </div>
+        <div style="position: absolute; bottom: 0; left: 0; width: 100vw; background-color: rgba(255, 255, 255, 0.5); padding: 10px 0px; font-family: Poppins, sans-serif;">
+          <div class="container-fluid" style="float: left; margin-left:15px;">
+            <a href="mailto:remi.dandois@gmail.com" target="_blank" class="nav-link" style="text-decoration: none; color: #252f61;">
+              <img src="{{url_for('static', filename= 'assets/img/email-qa.png')}}" style="height: 1em" />
+              <span style="height: 1em">remi.dandois@gmail.com</span>
+            </a>
+            <a href="www.linkedin.com/in/rémi-dandois-673995a3" target="_blank" class="nav-link" style="text-decoration: none; color: #252f61; margin-left: 50px;">
+              <img src="{{url_for('static', filename= 'assets/img/linkedin-qa.png')}}" style="height: 1em"/>
+              <span style="height: 1em">LinkedIn</span>
+            </a>
+            <a href="https://www.github.com" target="_blank" class="nav-link" style="text-decoration: none; color: #252f61; margin-left: 50px;">
+              <img src="{{url_for('static', filename= 'assets/img/github-qa.png')}}" style="height: 1em"/>
+              <span style="height: 1em">GitHub</span>
+              </li>
+          </div>
+          <div class="copyright" style="float: right; margin-right: 15px;">
+            Rémi Dandois - 2023
+            <!-- <a href="https://bit.ly/3fKQZaL" target="_blank">Rémi Dandois</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+  button {
+    color: #ffffff;
+    font-size: 19px;
+    border-radius: 10px;
+    padding: 15px 50px;
+    cursor: pointer;
+    font-size: x-large;
+    font-weight: bolder;
+  }
+
+  button:hover {
+    background-color: #ffffff;
+  }
+
+  .blue-btn {
+    background-color: #003366ff;
+    border: 0px solid #003366ff;
+  }
+
+  .blue-btn:hover {
+    color: #003366ff;
+  }
+
+  .pink-btn {
+    background-color: #bf41aa;
+    border: 0px solid #bf41aa;
+  }
+
+  .pink-btn:hover {
+    color: #bf41aa;
+  }
+</style>
