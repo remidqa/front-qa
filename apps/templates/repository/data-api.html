@@ -1,6 +1,8 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+
 <div class="content">
   <div class="row">
     <div class="col-md-12">
@@ -15,39 +17,206 @@
         </div>
         <div class="card-body">
           <div class="typography">
-            <!-- OVERVIEW -->
-            <div id="intro" style="margin-bottom: 50px;">
-              <h1 class="blue"><span style="color: #D346B1">Presentation of the data API</span></h1>
-              <div style="margin-bottom: 25px; color: #003366ff;">
+            <!-- INTRO -->
+            <div id="intro" style="margin-bottom: 25px;">
+              <h1 class="blue"><span style="color: #D346B1">Functional documentation of the Data-api</span>
+              </h1>
+              <div style="color: #003366ff; margin-bottom: 25px;">
                 <p style="color: #003366ff; font-size: 1.2em; font-weight: normal;">
-                <img src="{{url_for('static', filename= 'assets/img/github-qa.png')}}" style="width: 1.2em; margin-right: 15px;">Github Repository: <a href="https://github.com/remidqa/data-api" class="link">remidqa/data-api</a>
+                  <img src="{{url_for('static', filename= 'assets/img/github-qa.png')}}"
+                    style="width: 1.2em; margin-right: 15px;">Github Repository: <a
+                    href="https://github.com/remidqa/data-api" class="link">remidqa/data-api</a>
                 </p>
                 <p style="color: #003366ff; font-size: 1.2em; font-weight: normal;">
-                  <img src="{{url_for('static', filename= 'assets/img/book-qa.png')}}" style="width: 1.2em; margin-right: 15px;">Technical docs: <a href="https://github.com/remidqa/data-api/blob/main/README.md" class="link">README.md</a>
+                  <img src="{{url_for('static', filename= 'assets/img/book-qa.png')}}"
+                    style="width: 1.2em; margin-right: 15px;">Technical docs: <a
+                    href="https://github.com/remidqa/data-api/blob/main/README.md" class="link">README.md</a>
                 </p>
               </div>
-            <div>
-              <div style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
-                <span class="blue">Functional documentation</span>
-              
-              </div>
-              <p style="font-size:1.2em; font-weight: 400; color: #222f61;">
-                /!\ WORK IN PROGRESS /!\
+              <p class="p" style="text-align: justify;">
+                This API is the BFF of the front-qa website you are looking at.
               </p>
+              {% set routes = [
+              {
+              "title": "Experiences routes",
+              "paths": [
+              {
+              "title": "Get list of experiences",
+              "method": "get",
+              "path": "/experiences",
+              "reponseContainreId": "get-experiences"
+              },
+              {
+              "title": "Get an experience",
+              "method": "get",
+              "path": "/experiences/id/:experience_id",
+              "reponseContainreId": "get-experience"
+              },
+              {
+              "title": "Updqte an experience",
+              "method": "put",
+              "path": "/experiences/id/:experience_id",
+              "requestBody": { "${value of the key to update}": "${new value}" },
+              "reponseContainreId": "update-experience"
+              }
+              ]
+              },
+              {
+              "title": "Faq routes",
+              "paths": [
+              {
+              "title": "Get list of faq",
+              "method": "get",
+              "path": "/faq",
+              "reponseContainreId": "get-faqs"
+              },
+              {
+              "title": "Get an faq",
+              "method": "get",
+              "path": "/faq/id/:faq_id",
+              "reponseContainreId": "get-faq"
+              },
+              {
+              "title": "Update an faq",
+              "method": "put",
+              "path": "/faq/id/:faq_id",
+              "requestBody": { "${value of the key to update}": "${new value}" }, 
+              "reponseContainreId": "update-faq"
+              }
+              ]
+              }
+              ] %}
+              <div style="margin-top: 25px;">
+                {% for route in routes %}
+                {% set route_index = loop.index %}
+                <a href="{{ '#part-' + loop.index|string }}" class="menu-anchor">
+                  <p style="color: #003366ff;">{{ route.title }}</p>
+                </a>
+                {% for path in route.paths %}
+                <a href="{{ '#part-' + route_index|string + '-' + loop.index|string }}" class="menu-anchor">
+                  <p style="color: #003366ff; padding-left: 25px;">{{ path.title }}</p>
+                </a>
+                {% endfor %}
+                {% endfor %}
+              </div>
             </div>
+            {% for route in routes %}
+            {% set route_index = loop.index %}
+            <div>
+              <div
+                style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin: 25px 0px 15px 0px;">
+                <span class="blue" id="{{ 'part-' + loop.index|string }}">{{ route.title }}</span>
+              </div>
+              {% for path in route.paths %}
+              <div>
+                <p class="subtitle" id="{{ 'part-' + route_index|string + '-' + loop.index|string }}">
+                  {{ path.title }}
+                </p>
+                <div style="display: flex; margin: 15px 0px;">
+                  <div style="float: left;">
+                    <div class="{{ 'method-span ' + path.method + '-method p' }}" style="float: left; padding: 5px;">{{
+                      path.method|upper }}</div>
+                    <div style="background-color: #f5f6fa; border-radius: 0 5px 5px 0; float: left; padding: 5px;"
+                      class="p">
+                      {{ path.path }}</div>
+                  </div>
+                  {% if path.requestBody %}
+                  <div style="float: left; padding: 5px;">
+                    <span class="p">With body : <span style="font-weight: 300">{ "app": "${app}", "env": "${env}"
+                        }</span></span>
+                  </div>
+                  {% endif %}
+                </div>
+                <div style="padding: 5px;">
+                  <p>
+                    Expected response:
+                  </p>
+                  <pre><code class="json" id="{{ path.reponseContainreId }}"></code></pre>
+                </div>
+              </div>
+              {% endfor %}
             </div>
+            {% endfor %}
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<style>
-  .link{
-    color:#D346B1
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  let getExperiencesJson = ["<Object: experience#1 details>", "<Object: experience#2 details>", ".."]
+  let getExperienceJson = "<Object: experience with id ${experience_id} details>"
+  let updateExperienceJson = {
+    "msg": "document succesfully updated"
   }
-  .link:hover{
+  let getFaqsJson = ["<Object: faq#1 details>", "<Object: faq#2 details>", ".."]
+  let getfaqJson = "<Object: faq with id ${faq_id} details>"
+  let updateFaq = {
+    "msg": "document succesfully updated"
+  }
+  document.getElementById('get-experiences').textContent = JSON.stringify(getExperiencesJson, null, 2)
+  document.getElementById('get-experience').textContent = JSON.stringify(getExperienceJson, null, 2)
+  document.getElementById('update-experience').textContent = JSON.stringify(updateExperienceJson, null, 2)
+  document.getElementById('get-faqs').textContent = JSON.stringify(getFaqsJson, null, 2)
+  document.getElementById('get-faq').textContent = JSON.stringify(getfaqJson, null, 2)
+  document.getElementById('update-faq').textContent = JSON.stringify(updateFaq, null, 2)
+</script>
+<style>
+  .link {
+    color: #D346B1
+  }
+
+  .link:hover {
     text-decoration: underline;
+  }
+
+  .p {
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #003366ff !important
+  }
+
+  .subtitle {
+    margin-top: 25px;
+    color: #D346B1 !important;
+    font-size: 1.45em !important;
+    font-weight: 500 !important;
+    margin-bottom: 15px !important
+  }
+
+  .method-span {
+    border-radius: 5px 0 0 5px;
+  }
+
+  .get-method {
+    background-color: #eaf2ec;
+  }
+
+  .post-method {
+    background-color: #f9f0ea;
+  }
+
+  .put-method {
+    background-color: #e8f4f4;
+  }
+
+  .delete-method {
+    background-color: #fce8e8;
+  }
+
+  .li {
+    font-weight: 300 !important;
+  }
+
+  .menu-anchor {
+    text-decoration: none;
+  }
+
+  .menu-anchor:hover {
+    text-decoration: underline;
+    text-decoration-color: #003366ff
   }
 </style>
 {% endblock content %}

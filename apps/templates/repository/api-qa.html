@@ -1,6 +1,8 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+
 <div class="content">
   <div class="row">
     <div class="col-md-12">
@@ -15,26 +17,151 @@
         </div>
         <div class="card-body">
           <div class="typography">
-            <!-- OVERVIEW -->
-            <div id="intro" style="margin-bottom: 50px;">
-              <h1 class="blue"><span style="color: #D346B1">Presentation of the Quality Framework</span></h1>
-              <div style="margin-bottom: 25px; color: #003366ff;">
+            <!-- INTRO -->
+            <div id="intro" style="margin-bottom: 25px;">
+              <h1 class="blue"><span style="color: #D346B1">Functional documentation of the Quality Framework</span>
+              </h1>
+              <div style="color: #003366ff; margin-bottom: 25px;">
                 <p style="color: #003366ff; font-size: 1.2em; font-weight: normal;">
-                <img src="{{url_for('static', filename= 'assets/img/github-qa.png')}}" style="width: 1.2em; margin-right: 15px;">Github Repository: <a href="https://github.com/remidqa/api-qa" class="link">remidqa/api-qa</a>
+                  <img src="{{url_for('static', filename= 'assets/img/github-qa.png')}}"
+                    style="width: 1.2em; margin-right: 15px;">Github Repository: <a
+                    href="https://github.com/remidqa/api-qa" class="link">remidqa/api-qa</a>
                 </p>
                 <p style="color: #003366ff; font-size: 1.2em; font-weight: normal;">
-                  <img src="{{url_for('static', filename= 'assets/img/book-qa.png')}}" style="width: 1.2em; margin-right: 15px;">Technical docs: <a href="https://github.com/remidqa/api-qa/blob/main/README.md" class="link">README.md</a>
+                  <img src="{{url_for('static', filename= 'assets/img/book-qa.png')}}"
+                    style="width: 1.2em; margin-right: 15px;">Technical docs: <a
+                    href="https://github.com/remidqa/api-qa/blob/main/README.md" class="link">README.md</a>
                 </p>
               </div>
-            <div>
-              <div style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
-                <span class="blue">Functional documentation</span>
-              
+
+              <div>
+                <p class="p">
+                  In order for the framework to work, it needs a "map" of all your applications and how you use it.
+
+                </p>
+                <p class="p">There is a lot of possibilities to do it, but, the easiest one is to use .json files. This
+                  is the
+                  solution used
+                  for this API and it can be set up in few minutes.</p>
+                <p class="p">Let's have a look on how to register your tests,
+                  first with API postman tests, then with cypress tests.
+                </p>
+                <div style="margin-top: 25px;">
+                  <a href="#part-1" class="menu-anchor">
+                    <p style="color: #003366ff;">I. Prepare</p>
+                  </a>
+                  <a href="#part-1-a" class="menu-anchor">
+                    <p style="color: #003366ff; padding-left: 25px;">A. Postman testing strategy</p>
+                  </a>
+                  <a href="#part-1-b" class="menu-anchor">
+                    <p style="color: #003366ff; padding-left: 25px;">B. Cypress testing strategy</p>
+                  </a>
+                  <a href="#part-2" class="menu-anchor">
+                    <p style="color: #003366ff;">II. Use the QA Framework</p>
+                  </a>
+                  <a href="#part-3" class="menu-anchor">
+                    <p style="color: #003366ff;">III. Enjoy</p>
+                  </a>
+                </div>
               </div>
-              <p style="font-size:1.2em; font-weight: 400; color: #222f61;">
-                /!\ WORK IN PROGRESS /!\
-              </p>
             </div>
+            <!-- PREPARE STRATEGY -->
+            <div>
+              <div
+                style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin: 25px 0px 15px 0px;">
+                <span class="blue" id="part-1">I. Prepare</span>
+              </div>
+              <div>
+                <p class="subtitle" id="part-1-a">
+                  A. Postman testing strategy
+                </p>
+                <p class="p">
+                  If you have an API named 'data-api' with postman tests, you want to map the tests to your
+                  test management application. In our case we use testiny.io. The expected configuration file must :
+                <ul>
+                  <li class="p li">Be saved in your github configuration repository (eg. 'remidqa/qa-configuration)</li>
+                  <li class="p li">Be saved in the root of the repository</li>
+                  <li class="p li">Be named according to your application name (eg. 'data-api.json')</li>
+                  <li class="p li">Have the following content :</li>
+                  <li style="list-style-type: none;">
+                    <pre
+                      style="margin-bottom: 0;"><code class="json" id="postman-demo"></code></pre>
+                  </li>
+                  <li class="p">Full example :</li>
+                  <li style="list-style-type: none;">
+                    <pre><code class="json" id="postman-demo-full"></code></pre>
+                  </li>
+                </ul>
+                </p>
+              </div>
+              <div>
+                <p class="subtitle" id="part-1-b">
+                  B. Cypress testing strategy
+                </p>
+                <p class="p">
+                  If you have website application named 'front-qa' with cypress tests, you want to map the tests to your
+                  test management application. In our case we use testiny.io. The expected configuration must be :
+                <ul>
+                  <li class="p li">In the Cypress runner, tests files must be in a folder named with the application name
+                    and in the default test folder (eg. 'cypress/e2e/front-qa/*')</li>
+                  <li class="p li">Config .json file is saved in your github configuration repository (eg.
+                    'remidqa/qa-configuration')</li>
+                  <li class="p li">Config .json file is saved in the root of the repository</li>
+                  <li class="p li">Config .json file is named according to your application name (eg. 'front-qa.json')</li>
+                  <li class="p li">Have the following content :</li>
+                  <li style="list-style-type: none;">
+                    <pre style="margin-bottom: 0;"><code class="json" id="cy-demo"></code></pre>
+                  </li>
+                  <li class="p">Full example :</li>
+                  <li style="list-style-type: none;">
+                    <pre><code class="json" id="cy-demo-full"></code></pre>
+                  </li>
+                </ul>
+                </p>
+              </div>
+            </div>
+            <!-- EXECUTE THE FRAMEWORK -->
+            <div>
+              <div
+                style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin: 25px 0px 15px 0px;">
+                <span class="blue" id="part-2">II. Use the QA Framework</span>
+              </div>
+              <p class="p" style="text-align: justify;">
+                Once everything is setup, it is easy and highly reusable to perform action with the QA Framework.
+                If you followed the preparation steps, you realized you can have one .json file for API and functional tests.
+                You don't need to interact with multiple tools and configure tests campaigns in diffrent ways, all is done in one
+                place.
+              </p>
+              <div style="display: flex; margin: 15px 0px;">
+                <div style="float: left;">
+                  <div class="method-span post-method p" style="float: left; padding: 5px;">POST</div>
+                  <div style="background-color: #f5f6fa; border-radius: 0 5px 5px 0; float: left; padding: 5px;"
+                    class="p">
+                    /run</div>
+                </div>
+                <div style="float: left; padding: 5px;">
+                  <span class="p">With body : <span style="font-weight: 300">{ "app": "data-api", "env": "uat"
+                      }</span></span>
+                </div>
+              </div>
+            </div>
+            <!-- ENJOY -->
+            <div>
+              <div
+                style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin: 25px 0px 15px 0px;">
+                <span class="blue" id="part-3">III. Enjoy</span>
+              </div>
+              <p class="p">
+                When all executions are ended your will be able to access reports and results to:
+              <ul>
+                <li class="p li">Your test management application with the full report as an attachment</li>
+                <li class="p li">Your monitoring application with 'success' and 'falures' as metrics</li>
+                <li class="p li">Your chat client with a notification about the status of the execution and links to
+                  more details</li>
+                <li class="p li">Your database if you want to go deeper with tests executions (graph data, create KPI,
+                  check reliability,...)</li>
+              </ul>
+              </p>
             </div>
           </div>
         </div>
@@ -42,12 +169,129 @@
     </div>
   </div>
 </div>
-<style>
-  .link{
-    color:#D346B1
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  let postmanDemoJson = {
+    "testinyio_project_id": "<Integer: Id of you application/project in the test management tool>",
+    "postman": {
+      "postman_collection_id": "<String: if of the collection in postman>",
+      "scenarios": [
+        {
+          "testinyio_testcase_id": "<Integer: ID of the scenario #1 in testiny.io>",
+          "folder_name": "<String: the name of the postman subfolder corresponding to your testiny.io test>"
+        },
+        { "...": "..." }
+      ],
+      "postman_environments": {
+        "<String: name of your environment>": "<String: id of the environment in postman>",
+        "...": "..."
+      }
+    }
   }
-  .link:hover{
+  let postmanDemoFullJson = {
+    "testinyio_project_id": 1,
+    "postman": {
+      "postman_collection_id": "7777777-a1ccc1a1-333a-1a22-bb22-666666a22a22",
+      "scenarios": [
+        {
+          "testinyio_testcase_id": 1,
+          "folder_name": "[SanityCheck]ClientsList"
+        },
+        {
+          "testinyio_testcase_id": 2,
+          "folder_name": "[CRUD]ClientsList"
+        }
+      ],
+      "postman_environments": {
+        "uat": "7777777-1ccc1a22-bb1a-4444-bb1a-22a22a1a1a22",
+        "preview": "7777777-22bb333a-ccc1-1a1a-a333-333bb1a22ccc"
+      }
+    }
+  }
+  let cyDemoJson = {
+    "testinyio_project_id": "<Integer: Id of you application/project in the test management tool>",
+    "cypress": {
+      "scenarios": [
+        {
+          "testinyio_testcase_id": "<Integer: ID of the scenario #1 in testiny.io>",
+          "file_name": "<String: Name of the corresponfing test file in the cypress runner>"
+        },
+        { "...": "..." }
+      ],
+      "envs": ["uat", "..."]
+    }
+  }
+  let cyDemoFullJson = {
+    "testinyio_project_id": 2,
+    "cypress": {
+        "scenarios": [
+            {
+                "testinyio_testcase_id": 1,
+                "file_name": "SanityCheck"
+            },
+            {
+                "testinyio_testcase_id": 2,
+                "file_name": "Authentification"
+            }
+        ],
+        "envs": ["uat", "preiew"]
+    }
+}
+  document.getElementById('postman-demo').textContent = JSON.stringify(postmanDemoJson, null, 2)
+  document.getElementById('postman-demo-full').textContent = JSON.stringify(postmanDemoFullJson, null, 2)
+  document.getElementById('cy-demo').textContent = JSON.stringify(cyDemoJson, null, 2)
+  document.getElementById('cy-demo-full').textContent = JSON.stringify(cyDemoFullJson, null, 2)
+</script>
+<style>
+  .link {
+    color: #D346B1
+  }
+
+  .link:hover {
     text-decoration: underline;
+  }
+
+  .p {
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #003366ff !important
+  }
+
+  .subtitle {
+    margin-top: 25px;
+    color: #D346B1 !important;
+    font-size: 1.45em !important;
+    font-weight: 500 !important;
+    margin-bottom: 15px !important
+  }
+
+  .method-span {
+    border-radius: 5px 0 0 5px;
+  }
+
+  .get-method {
+    background-color: #eaf2ec;
+  }
+
+  .post-method {
+    background-color: #f9f0ea;
+  }
+
+  .put-method {
+    background-color: #e8f4f4;
+  }
+  .li{
+    font-weight: 300 !important;
+  }
+  .menu-anchor {
+    text-decoration: none;
+  }
+
+  .menu-anchor:hover {
+    text-decoration: underline;
+    text-decoration-color: #003366ff
   }
 </style>
 {% endblock content %}

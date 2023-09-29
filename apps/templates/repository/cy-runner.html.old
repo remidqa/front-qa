@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header mb-1">
+          <div style="width: 100%; display: inline-block;">
+            <div style="float: left;">
+              <h5 class="card-category">Rémi Dandois QA</h5>
+              <h3 class="card-title">Repositories</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="typography">
+            <!-- OVERVIEW -->
+            <div id="intro" style="margin-bottom: 50px;">
+              <h1 class="blue"><span style="color: #D346B1">Presentation of the Cypress Runner</span></h1>
+              <div style="margin-bottom: 25px; color: #003366ff;">
+                <p style="color: #003366ff; font-size: 1.2em; font-weight: normal;">
+                <img src="{{url_for('static', filename= 'assets/img/github-qa.png')}}" style="width: 1.2em; margin-right: 15px;">Github Repository: <a href="https://github.com/remidqa/cy-runner" class="link">remidqa/cy-runner</a>
+                </p>
+                <p style="color: #003366ff; font-size: 1.2em; font-weight: normal;">
+                  <img src="{{url_for('static', filename= 'assets/img/book-qa.png')}}" style="width: 1.2em; margin-right: 15px;">Technical docs: <a href="https://github.com/remidqa/cy-runner/blob/main/README.md" class="link">README.md</a>
+                </p>
+              </div>
+            <div>
+              <div style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
+                <span class="blue">Functional documentation</span>
+              
+              </div>
+              <p style="font-size:1.2em; font-weight: 400; color: #222f61;">
+                /!\ WORK IN PROGRESS /!\
+              </p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .link{
+    color:#D346B1
+  }
+  .link:hover{
+    text-decoration: underline;
+  }
+</style>
+{% endblock content %}
