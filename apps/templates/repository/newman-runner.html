@@ -1,6 +1,8 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+
 <div class="content">
   <div class="row">
     <div class="col-md-12">
@@ -15,39 +17,196 @@
         </div>
         <div class="card-body">
           <div class="typography">
-            <!-- OVERVIEW -->
-            <div id="intro" style="margin-bottom: 50px;">
-              <h1 class="blue"><span style="color: #D346B1">Presentation Newman runner</span></h1>
-              <div style="margin-bottom: 25px; color: #003366ff;">
+            <!-- INTRO -->
+            <div id="intro" style="margin-bottom: 25px;">
+              <h1 class="blue"><span style="color: #D346B1">Functional documentation of the Newman runner</span>
+              </h1>
+              <div style="color: #003366ff; margin-bottom: 25px;">
                 <p style="color: #003366ff; font-size: 1.2em; font-weight: normal;">
-                <img src="{{url_for('static', filename= 'assets/img/github-qa.png')}}" style="width: 1.2em; margin-right: 15px;">Github Repository: <a href="https://github.com/remidqa/newman-runner" class="link">remidqa/newman-runner</a>
+                  <img src="{{url_for('static', filename= 'assets/img/github-qa.png')}}"
+                    style="width: 1.2em; margin-right: 15px;">Github Repository: <a
+                    href="https://github.com/remidqa/newman-runner" class="link">remidqa/newman-runner</a>
                 </p>
                 <p style="color: #003366ff; font-size: 1.2em; font-weight: normal;">
-                  <img src="{{url_for('static', filename= 'assets/img/book-qa.png')}}" style="width: 1.2em; margin-right: 15px;">Technical docs: <a href="https://github.com/remidqa/newman-runner/blob/main/README.md" class="link">README.md</a>
+                  <img src="{{url_for('static', filename= 'assets/img/book-qa.png')}}"
+                    style="width: 1.2em; margin-right: 15px;">Technical docs: <a
+                    href="https://github.com/remidqa/newman-runner/blob/main/README.md" class="link">README.md</a>
                 </p>
               </div>
-            <div>
-              <div style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
-                <span class="blue">Functional documentation</span>
-              
-              </div>
-              <p style="font-size:1.2em; font-weight: 400; color: #222f61;">
-                /!\ WORK IN PROGRESS /!\
+              <p class="p" style="text-align: justify;">
+                This application is a Newman tests runner wrapped in an API. It can be used to trigger tests and and manage reports
               </p>
+              {% set routes = [
+              {
+              "title": "Reports routes",
+              "paths": [
+              {
+              "title": "Get a report",
+              "method": "get",
+              "path": "/report?report_name=${report_name}",
+              "reponseContainreId": "get-report"
+              },
+              {
+              "title": "Delete a report",
+              "method": "delete",
+              "path": "/report?report_name?${report_name}",
+              "reponseContainreId": "delete-report"
+              }
+              ]
+              },
+              {
+              "title": "Run routes",
+              "paths": [
+              {
+              "title": "Request a test(s) execution",
+              "method": "post",
+              "path": "/run",
+              "reponseContainreId": "run",
+              "requestBody": { "app": "${app}", "env": "${env}" }
+              }
+              ]
+              }
+              ] %}
+              <div style="margin-top: 25px;">
+                {% for route in routes %}
+                {% set route_index = loop.index %}
+                <a href="{{ '#part-' + loop.index|string }}" class="menu-anchor">
+                  <p style="color: #003366ff;">{{ route.title }}</p>
+                </a>
+                {% for path in route.paths %}
+                <a href="{{ '#part-' + route_index|string + '-' + loop.index|string }}" class="menu-anchor">
+                  <p style="color: #003366ff; padding-left: 25px;">{{ path.title }}</p>
+                </a>
+                {% endfor %}
+                {% endfor %}
+              </div>
             </div>
+            {% for route in routes %}
+            {% set route_index = loop.index %}
+            <div>
+              <div
+                style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin: 25px 0px 15px 0px;">
+                <span class="blue" id="{{ 'part-' + loop.index|string }}">{{ route.title }}</span>
+              </div>
+              {% for path in route.paths %}
+              <div>
+                <p class="subtitle" id="{{ 'part-' + route_index|string + '-' + loop.index|string }}">
+                  {{ path.title }}
+                </p>
+                <div style="display: flex; margin: 15px 0px;">
+                  <div style="float: left;">
+                    <div class="{{ 'method-span ' + path.method + '-method p' }}" style="float: left; padding: 5px;">{{
+                      path.method|upper }}</div>
+                    <div style="background-color: #f5f6fa; border-radius: 0 5px 5px 0; float: left; padding: 5px;"
+                      class="p">
+                      {{ path.path }}</div>
+                  </div>
+                  {% if path.requestBody %}
+                  <div style="float: left; padding: 5px;">
+                    <span class="p">With body : <span style="font-weight: 300">{ "app": "${app}", "env": "${env}"
+                        }</span></span>
+                  </div>
+                  {% endif %}
+                </div>
+                <div style="padding: 5px;">
+                  <p>
+                    Expected response:
+                  </p>
+                  <pre><code class="json" id="{{ path.reponseContainreId }}"></code></pre>
+                </div>
+              </div>
+              {% endfor %}
             </div>
+            {% endfor %}
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<style>
-  .link{
-    color:#D346B1
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  let getReportJson = {
+    "[faq]SanityCheck": {
+      "report_name": "${generatedReportName}",
+      "status": "success",
+      "report": "${full .json postman report for test '[faq]SanityCheck'}"
+    },
+    "[faq]CRUD": {
+      "report_name": "${generatedReportName}",
+      "status": "success",
+      "report": "${full .json postman report for test '[faq]CRUD'}"
+    },
+    "...": ""
   }
-  .link:hover{
+  let deleteReportJson = {
+    "status": 200,
+    "msg": "report '${report_name}' succesfully deleted"
+  }
+  let runJson = {
+    "status": 200,
+    "msg": "execution ended",
+    "report_name": "${generated_report_name}"
+  }
+  document.getElementById('get-report').textContent = JSON.stringify(getReportJson, null, 2)
+  document.getElementById('delete-report').textContent = JSON.stringify(deleteReportJson, null, 2)
+  document.getElementById('run').textContent = JSON.stringify(runJson, null, 2)
+</script>
+<style>
+  .link {
+    color: #D346B1
+  }
+
+  .link:hover {
     text-decoration: underline;
+  }
+
+  .p {
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #003366ff !important
+  }
+
+  .subtitle {
+    margin-top: 25px;
+    color: #D346B1 !important;
+    font-size: 1.45em !important;
+    font-weight: 500 !important;
+    margin-bottom: 15px !important
+  }
+
+  .method-span {
+    border-radius: 5px 0 0 5px;
+  }
+
+  .get-method {
+    background-color: #eaf2ec;
+  }
+
+  .post-method {
+    background-color: #f9f0ea;
+  }
+
+  .put-method {
+    background-color: #e8f4f4;
+  }
+
+  .delete-method {
+    background-color: #fce8e8;
+  }
+
+  .li {
+    font-weight: 300 !important;
+  }
+
+  .menu-anchor {
+    text-decoration: none;
+  }
+
+  .menu-anchor:hover {
+    text-decoration: underline;
+    text-decoration-color: #003366ff
   }
 </style>
 {% endblock content %}
