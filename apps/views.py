@@ -4,7 +4,7 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 # Flask modules
-from flask   import render_template, request, redirect
+from flask   import render_template, request, redirect, jsonify
 from jinja2  import TemplateNotFound
 import requests
 
@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 data_api_url=os.environ.get('DATA_API_INT_URL')
+api_qa_url=os.environ.get('API_QA_INT_URL')
 
 # App modules
 from apps import app
@@ -26,11 +27,12 @@ def index():
   except TemplateNotFound:
     return render_template('hp.html'), 404
 
-
 # Pages 
 @app.route('/dashboard')
 def pages_dashboard():
-  return render_template('dashboard.html', segment='dashboard', parent='pages')
+  raw_metrics= requests.request("GET", f"{api_qa_url}/data", headers={}, data={}, verify=False)
+  json_metrics=raw_metrics.json()
+  return render_template('dashboard.html', metrics = json_metrics, segment='dashboard', parent='pages')
 
 @app.route('/resume')
 def pages_resume():
