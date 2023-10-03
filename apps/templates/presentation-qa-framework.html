@@ -26,8 +26,8 @@
                 </p>
               </div>
               <div
-                style="display: flex; margin-bottom: 25px; background: #f5f6fa; border-radius: 5px; padding: 15px 15px;">
-                <div style="float: left; width: 50%; padding-right: 15px;">
+                style="display: inline-block; margin-bottom: 25px; background: #f5f6fa; border-radius: 5px; padding: 15px 15px;">
+                <div class="overview-list left-elem-padding">
                   <p style="color: #003366ff; font-weight: normal;">
                   <div style="color: #D346B1; font-size: 1.2em;">
                     <div style="margin-bottom: 15px;">Concretely, one action on the framework will :</div>
@@ -45,7 +45,7 @@
                   </div>
                   </p>
                 </div>
-                <div style="float: left; width: 50%; padding-left: 15px;">
+                <div class="overview-list right-elem-padding">
                   <p style="color: #003366ff; font-weight: normal;">
                   <div style="color: #D346B1; font-size: 1.2em;">
                     <div style="margin-bottom: 15px;">Available features - not exhaustive, there is way too many
@@ -103,8 +103,8 @@
                 <span class="blue">I. The situation</span>
               </div>
               <div style="margin-bottom: 25px; font-size: 1.2em; font-family: Poppins; text-align: justify;">
-                <div style="display: flex;">
-                  <div style="float: left; width: 50%;">
+                <div class="situation-text-container-parent">
+                  <div class="situation-text-container">
                     <p style="color: #003366ff;">
                       In all companies, a lot of softwares, applications, API,... are used to perform the quality
                       strategy.
@@ -118,14 +118,47 @@
                       style="border-radius: 5px; padding: 15px 0px 0px 0px; display: inline-block; margin-bottom: 25px;">
                       <p style="color: #D346B1; margin-bottom: 15px;">Let's have a look at all applications and users,
                         the posibilities are enormous and things can quickly can become laborious for everyone.</p>
-                      <div style="float: left; width: 50%;">
-                        <ul style="list-style-type: none; margin-bottom: 0px;">
+                      <div class="situation-ul-container">
+                        <ul class="situation-ul-title">
+                          <li style="color: #003366ff;">
+                            TESTING APPLICATIONS
+                            <ul>
+                              <li style="color: #003366ff; font-weight: 100;">Functional Tests</li>
+                              <li style="color: #003366ff; font-weight: 100;">API tests</li>
+                              <li style="color: #003366ff; font-weight: 100;">Unit Tests</li>
+                              <li style="color: #003366ff; font-weight: 100;">...</li>
+                            </ul>
+                          </li>
+                        </ul>
+                        <ul class="situation-ul-title">
+                          <li style="color: #003366ff;">
+                            REPORTING APPLICATIONS
+                            <ul>
+                              <li style="color: #003366ff; font-weight: 100;">Monitoring</li>
+                              <li style="color: #003366ff; font-weight: 100;">Chat alerts</li>
+                              <li style="color: #003366ff; font-weight: 100;">History in database</li>
+                              <li style="color: #003366ff; font-weight: 100;">...</li>
+                            </ul>
+                          </li>
+                        </ul>
+                        <ul class="situation-ul-title">
+                          <li style="color: #003366ff;">
+                            MANAGEMENT APPLICATIONS
+                            <ul>
+                              <li style="color: #003366ff; font-weight: 100;">Bug tracking</li>
+                              <li style="color: #003366ff; font-weight: 100;">Test book management</li>
+                              <li style="color: #003366ff; font-weight: 100;">Sprint validation</li>
+                              <li style="color: #003366ff; font-weight: 100;">...</li>
+                            </ul>
+                          </li>
+                        </ul>
+                        <!-- <ul style="list-style-type: none; margin-bottom: 0px; text-align: left;">
                           <li style="color: #003366ff;">
                             APPLICATIONS
                             <ul style="list-style-type: none;">
                               <li style="color: #003366ff;">For testing
                                 <ul style="list-style-type: none;">
-                                  <li style="color: #003366ff; font-weight: 100;">Functional Tests</li>
+                                  <li class='' style="color: #003366ff; font-weight: 100;">Functional Tests</li>
                                   <li style="color: #003366ff; font-weight: 100;">API tests</li>
                                   <li style="color: #003366ff; font-weight: 100;">Unit Tests</li>
                                   <li style="color: #003366ff; font-weight: 100;">...</li>
@@ -149,10 +182,10 @@
                               </li>
                             </ul>
                           </li>
-                        </ul>
+                        </ul> -->
                       </div>
-                      <div style="float: left; width: 50%;">
-                        <ul style="list-style-type: none;">
+                      <div class="situation-ul-container">
+                        <ul class="situation-ul-title">
                           <li style="color: #003366ff;">
                             USERS
                             <ul>
@@ -167,18 +200,15 @@
                       </div>
                     </div>
                   </div>
-                  <div style="float: left; width: 50%; padding: 0px 0px 0px 15px; display: flex;">
-                    <img src="{{url_for('static', filename= 'assets/img/cloud-qa.png')}}" style="margin: auto 0px;" />
+                  <div class="situation-img-container">
+                    <img src="{{url_for('static', filename= 'assets/img/cloud-qa.png')}}" />
                   </div>
                 </div>
                 <div style="display: flex; background: #f5f6fa; border-radius: 5px; padding: 15px 15px;">
                   <div style="width: 100%;">
-                    <div style="width: 100%;">
-                      <div style="width: 50%; float: left; color: #D346B1;">Risks</div>
-                      <div style="width: 50%; float: left; color: #D346B1">Consequences</div>
-                    </div>
-                    <div style="width: 100%;">
-                      <div style="width: 50%; float: left;">
+                    <div class="situation-conclusion-list left-elem-padding">
+                      <div style="width: 100%; color: #D346B1;">Risks</div>
+                      <div style="width: 100%;">
                         <ul>
                           <li style="color: #003366ff; font-weight: 300;">Increase the number of errors due to manual
                             actions</li>
@@ -186,7 +216,11 @@
                             need time and focus on repetitive tasks</li>
                         </ul>
                       </div>
-                      <div style="width: 50%; float: left;">
+
+                    </div>
+                    <div class="situation-conclusion-list right-elem-padding">
+                      <div style="width: 100%; color: #D346B1">Consequences</div>
+                      <div style="width: 100%;">
                         <ul>
                           <li style="color: #003366ff; font-weight: 300;">Lower the attractivity and reliability of your
                             quality strategy</li>
@@ -367,10 +401,10 @@
                           {{ i['explanation']['value'] }}
                           {% elif i['explanation']['type'] == 'requests' %}
                           {% for req in i['explanation']['value'] %}
-                          <div>
+                          <div style="margin-bottom: 15px;">
                             <div><span class="pink">Application</span><span> : {{ req['application'] }}</span></div>
-                            <div style="display: flex; margin-bottom: 15px;">
-                              <div style="float: left;">
+                            <div class="method-path-text-container">
+                              <div class="method-path-container">
                                 <div class="{{ 'method-span' + ' ' + req['method']|lower+'-method' }}"
                                   style="float: left; padding: 5px;">{{ req['method'] }}</div>
                                 <div
@@ -378,7 +412,7 @@
                                   {{ req['path'] }}</div>
                               </div>
                               <div style="float: left; padding: 5px;">
-                                <span>: {{ req['text'] }}</span>
+                                <span>{{ req['text'] }}</span>
                               </div>
                             </div>
                           </div>
@@ -400,7 +434,8 @@
                 style="border-bottom: #222f61 solid 1px; font-weight: 500; font-size: x-large; margin-bottom: 15px;">
                 <span class="blue">III. Implementation</span>
               </div>
-              <div id="part-3-a" style="margin-bottom: 50px; font-size: 1.2em; font-family: Poppins; text-align: justify;">
+              <div id="part-3-a"
+                style="margin-bottom: 50px; font-size: 1.2em; font-family: Poppins; text-align: justify;">
                 <p style="color: #D346B1; font-size: 1.2em; font-weight: 500; margin-bottom: 15px;">
                   A. API call
                 </p>
@@ -412,11 +447,14 @@
                   in our case, the 2 scopes management all our strategy quality
                 </p>
                 <div style="width: 100%; text-align: center;">
-                  <img src="{{url_for('static', filename= 'assets/img/postman-integration.png')}}"
-                    style="box-shadow: 16px 16px 32px -20px #000000;" />
+                  <div class="implementation-img-container">
+                    <img src="{{url_for('static', filename= 'assets/img/postman-integration.png')}}"
+                      style="box-shadow: 16px 16px 32px -20px #000000;" />
+                  </div>
                 </div>
               </div>
-              <div id="part-3-b" style="margin-bottom: 50px; font-size: 1.2em; font-family: Poppins; text-align: justify;">
+              <div id="part-3-b"
+                style="margin-bottom: 50px; font-size: 1.2em; font-family: Poppins; text-align: justify;">
                 <p style="color: #D346B1; font-size: 1.2em; font-weight: 500; margin-bottom: 15px;">
                   B. Use from Discord
                 </p>
@@ -424,14 +462,20 @@
                   You can easely add a feature in your professional chat application to trigger a non-regression
                   execution, here is an example in Discord.
                 </p>
-                <div class="carousel" data-flickity='{ "wrapAround": true }'
-                  style="box-shadow: 16px 16px 32px -20px #000000;">
-                  <img src="{{url_for('static', filename= 'assets/img/carousel/discord1.png')}}" />
-                  <img src="{{url_for('static', filename= 'assets/img/carousel/discord2.png')}}" />
-                  <img src="{{url_for('static', filename= 'assets/img/carousel/discord3.png')}}" />
+                <div class="carousel-wrapper" style="width: 100%; text-align: center;">
+                  <div class="carousel" data-flickity='{ "wrapAround": false }'
+                    style="box-shadow: 16px 16px 32px -20px #000000; max-width: 500px; margin: auto;">
+                    <img class="carousel-img"
+                      src="{{url_for('static', filename= 'assets/img/carousel/discord1-small.png')}}" />
+                    <img class="carousel-img"
+                      src="{{url_for('static', filename= 'assets/img/carousel/discord2-small.png')}}" />
+                    <img class="carousel-img"
+                      src="{{url_for('static', filename= 'assets/img/carousel/discord3-small.png')}}" />
+                  </div>
                 </div>
               </div>
-              <div id="part-3-c" style="margin-bottom: 25px; font-size: 1.2em; font-family: Poppins; text-align: justify;">
+              <div id="part-3-c"
+                style="margin-bottom: 25px; font-size: 1.2em; font-family: Poppins; text-align: justify;">
                 <p style="color: #D346B1; font-size: 1.2em; font-weight: 500; margin-bottom: 15px;">
                   C. Cicd
                 </p>
@@ -445,9 +489,12 @@
                   You can choose for the pipeline to wait or not for the tests results, in either way you already setted
                   up alerts and monitors, you will know about a failure in the moment.
                 </p>
+
                 <div style="width: 100%; text-align: center;">
-                  <img src="{{url_for('static', filename= 'assets/img/cicd-workflow.png')}}"
-                    style="box-shadow: 16px 16px 32px -20px #000000; padding: 25px; background: #ffffff;" />
+                  <div class="implementation-img-container">
+                    <img src="{{url_for('static', filename= 'assets/img/cicd-workflow.png')}}"
+                      style="box-shadow: 16px 16px 32px -20px #000000; padding:15px;" />
+                  </div>
                 </div>
               </div>
               <!-- <div class="carousel" data-flickity='{ "wrapAround": true }'>
@@ -556,6 +603,157 @@
 
   .put-method {
     background-color: #e8f4f4;
+  }
+
+  .overview-list {
+    float: left;
+    width: 50%;
+  }
+
+  .overview-list-left {
+    padding-right: 15px;
+  }
+
+  .overview-list-right {
+    padding-left: 15px;
+  }
+
+  .situation-text-container-parent {
+    display: flex;
+    margin-bottom: 25px;
+  }
+
+  .situation-text-container {
+    float: left;
+    width: 50%;
+  }
+
+  .situation-img-container {
+    float: left;
+    width: 50%;
+    padding: 0px 0px 0px 15px;
+    display: flex;
+  }
+
+  .situation-img-container img {
+    width: 100%;
+    margin: auto;
+  }
+
+  .situation-ul-container {
+    float: left;
+    width: 50%
+  }
+
+  .situation-ul-title {
+    padding-left: 40px;
+    list-style: none;
+  }
+
+  .situation-conclusion-list {
+    width: 50%;
+    float: left;
+  }
+
+  .left-elem-padding {
+    padding-right: 15px
+  }
+
+  .right-elem-padding {
+    padding-left: 15px
+  }
+  .method-path-container {
+      float: none;
+      width: 100%;
+    }
+    .method-path-text-container {
+      display: inline-grid;
+    }
+
+  /**.method-path-text-container {
+    display: flex;
+    margin-bottom: 15px;
+  } **/
+
+  /**.method-path-container {
+    float: left;
+    margin-right: 10px
+  }**/
+
+  .carousel-img {
+    object-fit: contain;
+  }
+
+  .implementation-img-container {
+    max-width: 80%;
+    margin: auto;
+  }
+
+  @media screen and (max-width: 1453px) {
+    .situation-text-container-parent {
+      display: inline-block
+    }
+
+    .situation-text-container {
+      width: 100%;
+    }
+
+    .situation-img-container {
+      float: left;
+      width: 100%;
+      display: flex;
+      text-align: center;
+    }
+
+    .situation-img-container img {
+      width: 50%;
+      margin: auto;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    
+  }
+
+  @media screen and (max-width: 768px) {
+    .overview-list {
+      float: left;
+      width: 100%;
+    }
+
+    .left-elem-padding {
+      padding-right: 0px
+    }
+
+    .right-elem-padding {
+      padding-left: 0px
+    }
+
+
+    .situation-ul-container {
+      width: 100%
+    }
+
+    .situation-ul-title {
+      padding-left: 0px;
+    }
+
+    .situation-img-container img {
+      width: 100%;
+      margin: auto;
+    }
+
+    .situation-conclusion-list {
+      width: 100%;
+    }
+
+    
+
+    .implementation-img-container {
+      max-width: 100%;
+      margin: auto;
+    }
+
   }
 </style>
 {% endblock content %}

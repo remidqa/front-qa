@@ -34,7 +34,8 @@
                 </p>
               </div>
               <p class="p" style="text-align: justify;">
-                This application is a Newman tests runner wrapped in an API. It can be used to trigger tests and and manage reports
+                This application is a Newman tests runner wrapped in an API. It can be used to trigger tests and and
+                manage reports
               </p>
               {% set routes = [
               {
@@ -93,16 +94,16 @@
                 <p class="subtitle" id="{{ 'part-' + route_index|string + '-' + loop.index|string }}">
                   {{ path.title }}
                 </p>
-                <div style="display: flex; margin: 15px 0px;">
-                  <div style="float: left;">
+                <div class="method-path-body-container">
+                  <div class="method-path-container">
                     <div class="{{ 'method-span ' + path.method + '-method p' }}" style="float: left; padding: 5px;">{{
                       path.method|upper }}</div>
                     <div style="background-color: #f5f6fa; border-radius: 0 5px 5px 0; float: left; padding: 5px;"
-                      class="p">
+                      class="p path-container">
                       {{ path.path }}</div>
                   </div>
                   {% if path.requestBody %}
-                  <div style="float: left; padding: 5px;">
+                  <div class="body-container">
                     <span class="p">With body : <span style="font-weight: 300">{ "app": "${app}", "env": "${env}"
                         }</span></span>
                   </div>
@@ -207,6 +208,42 @@
   .menu-anchor:hover {
     text-decoration: underline;
     text-decoration-color: #003366ff
+  }
+
+  .method-path-body-container {
+    display: flex;
+    margin: 15px 0px;
+  }
+
+  .method-path-container {
+    float: left;
+  }
+
+  .body-container {
+    float: left;
+    padding: 5px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .link {
+      display: block;
+    }
+
+    .method-path-body-container {
+      margin: 15px 0px;
+      display: block;
+    }
+
+    .method-path-container {
+      width: 100%;
+    }
+
+    .body-container {
+      width: 100%
+    }
+    .path-container{
+      display: block;
+    }
   }
 </style>
 {% endblock content %}

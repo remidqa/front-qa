@@ -16,6 +16,9 @@
     {% include 'includes/sidebar.html' %}
     {% endblock sidebar %}
     <div class="main-panel">
+      {% block responsiv_menu_displayer %}
+        {% include 'includes/responsiv_menu_displayer.html' %}
+      {% endblock responsiv_menu_displayer %}
       <!-- {% block navigation %}
             {% include 'includes/navigation.html' %}
             {% endblock navigation %} -->

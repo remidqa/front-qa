@@ -17339,7 +17339,7 @@ table.tablesorter thead tr .headerSortDown {
 .sidebar,
 .off-canvas-sidebar {
   background: #003366ff;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 90px) !important;
   width: 230px;
   position: fixed;
   top: 0;
