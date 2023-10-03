@@ -1,0 +1,38 @@
+{% block responsiv_menu_displayer %}
+<div id="responsiv-menu-displayer">
+    <div class="navbar-wrapper">
+        <div class="navbar-toggle d-inline">
+            <div id="menu-displayer">
+                <i class="tim-icons icon-minimal-right" style="color: #003366ff; font-weight: bold;"></i>
+                <a class="navbar-brand menu-displayer-text" href="javascript:void(0)">Menu</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<style>
+    #responsiv-menu-displayer{
+        display: none;
+    }
+    #menu-displayer{
+        padding: 0px 30px;
+    }
+    .menu-displayer-text{
+        color: #D346B1;
+        font-family: "Poppins";
+    }
+    @media screen and (max-width: 991px) {
+        #responsiv-menu-displayer {
+            display: block;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        #responsiv-menu-displayer {
+            display: block;
+        }
+        #menu-displayer{
+        padding: 0px 10px;
+    }
+    }
+</style>
+{% endblock responsiv_menu_displayer %}

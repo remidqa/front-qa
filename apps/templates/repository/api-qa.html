@@ -84,8 +84,7 @@
                   <li class="p li">Be named according to your application name (eg. 'data-api.json')</li>
                   <li class="p li">Have the following content :</li>
                   <li style="list-style-type: none;">
-                    <pre
-                      style="margin-bottom: 0;"><code class="json" id="postman-demo"></code></pre>
+                    <pre style="margin-bottom: 0;"><code class="json" id="postman-demo"></code></pre>
                   </li>
                   <li class="p">Full example :</li>
                   <li style="list-style-type: none;">
@@ -102,12 +101,14 @@
                   If you have website application named 'front-qa' with cypress tests, you want to map the tests to your
                   test management application. In our case we use testiny.io. The expected configuration must be :
                 <ul>
-                  <li class="p li">In the Cypress runner, tests files must be in a folder named with the application name
+                  <li class="p li">In the Cypress runner, tests files must be in a folder named with the application
+                    name
                     and in the default test folder (eg. 'cypress/e2e/front-qa/*')</li>
                   <li class="p li">Config .json file is saved in your github configuration repository (eg.
                     'remidqa/qa-configuration')</li>
                   <li class="p li">Config .json file is saved in the root of the repository</li>
-                  <li class="p li">Config .json file is named according to your application name (eg. 'front-qa.json')</li>
+                  <li class="p li">Config .json file is named according to your application name (eg. 'front-qa.json')
+                  </li>
                   <li class="p li">Have the following content :</li>
                   <li style="list-style-type: none;">
                     <pre style="margin-bottom: 0;"><code class="json" id="cy-demo"></code></pre>
@@ -128,11 +129,27 @@
               </div>
               <p class="p" style="text-align: justify;">
                 Once everything is setup, it is easy and highly reusable to perform action with the QA Framework.
-                If you followed the preparation steps, you realized you can have one .json file for API and functional tests.
-                You don't need to interact with multiple tools and configure tests campaigns in diffrent ways, all is done in one
+                If you followed the preparation steps, you realized you can have one .json file for API and functional
+                tests.
+                You don't need to interact with multiple tools and configure tests campaigns in diffrent ways, all is
+                done in one
                 place.
               </p>
-              <div style="display: flex; margin: 15px 0px;">
+
+              <div class="method-path-body-container">
+                <div class="method-path-container">
+                  <div class="method-span post-method p" style="float: left; padding: 5px;">POST</div>
+                  <div style="background-color: #f5f6fa; border-radius: 0 5px 5px 0; float: left; padding: 5px;"
+                    class="p">
+                    /run</div>
+                </div>
+                <div class="body-container">
+                  <span class="p path-container">With body : <span style="font-weight: 300">{ "app": "data-api", "env": "uat"
+                  }</span></span>
+                </div>
+              </div>
+
+              <!-- <div style="display: flex; margin: 15px 0px;">
                 <div style="float: left;">
                   <div class="method-span post-method p" style="float: left; padding: 5px;">POST</div>
                   <div style="background-color: #f5f6fa; border-radius: 0 5px 5px 0; float: left; padding: 5px;"
@@ -143,7 +160,7 @@
                   <span class="p">With body : <span style="font-weight: 300">{ "app": "data-api", "env": "uat"
                       }</span></span>
                 </div>
-              </div>
+              </div> -->
             </div>
             <!-- ENJOY -->
             <div>
@@ -226,19 +243,19 @@
   let cyDemoFullJson = {
     "testinyio_project_id": 2,
     "cypress": {
-        "scenarios": [
-            {
-                "testinyio_testcase_id": 1,
-                "file_name": "SanityCheck"
-            },
-            {
-                "testinyio_testcase_id": 2,
-                "file_name": "Authentification"
-            }
-        ],
-        "envs": ["uat", "preiew"]
+      "scenarios": [
+        {
+          "testinyio_testcase_id": 1,
+          "file_name": "SanityCheck"
+        },
+        {
+          "testinyio_testcase_id": 2,
+          "file_name": "Authentification"
+        }
+      ],
+      "envs": ["uat", "preiew"]
     }
-}
+  }
   document.getElementById('postman-demo').textContent = JSON.stringify(postmanDemoJson, null, 2)
   document.getElementById('postman-demo-full').textContent = JSON.stringify(postmanDemoFullJson, null, 2)
   document.getElementById('cy-demo').textContent = JSON.stringify(cyDemoJson, null, 2)
@@ -282,9 +299,11 @@
   .put-method {
     background-color: #e8f4f4;
   }
-  .li{
+
+  .li {
     font-weight: 300 !important;
   }
+
   .menu-anchor {
     text-decoration: none;
   }
@@ -292,6 +311,39 @@
   .menu-anchor:hover {
     text-decoration: underline;
     text-decoration-color: #003366ff
+  }
+  .method-path-body-container {
+    display: flex;
+    margin: 15px 0px;
+  }
+
+  .method-path-container {
+    float: left;
+  }
+  .body-container {
+    float: left;
+    padding: 5px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .link {
+      display: block;
+    }
+    .method-path-body-container {
+      margin: 15px 0px;
+      display: block;
+    }
+
+    .method-path-container {
+      width: 100%;
+    }
+
+    .body-container {
+      width: 100%
+    }
+    .path-container{
+      display: block;
+    }
   }
 </style>
 {% endblock content %}
